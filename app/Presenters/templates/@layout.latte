@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title n:snippet="title">{ifset title}{include title|stripHtml} | {/ifset}Carrier zakázky</title>
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="stylesheet" href="{$basePath}/bootstrap/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+{$name = "mahulena 'cikanovna ! / // asd"}
+<div class="container">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ajax" n:href="TubeProduction:production">Vyrobeno</a>
+				</li>
+				<li class="nav-item">
+					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link">Registrovat</a>
+				</li>
+				<li class="nav-item">
+					{if $user->loggedIn}
+						<a class="nav-link" n:href="Sign:out">Odhlásit</a>
+					{else}
+						<a class="nav-link" n:href="Sign:in">Přihlásit</a>
+					{/if}
+				</li>
+			</ul>
+			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[name]}{/if}</div>
+
+			<form n:name="searchForm" class="form-inline my-lg-0">
+				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Search" aria-label="Search">
+				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send">
+			</form>
+		</div>
+	</nav>
+</div>
+
+
+
+
+
+
+<main class="mainContent" n:snippet="content">
+{include content}
+</main>
+
+		{block scripts}
+		<script></script>
+		<script src="{$basePath}/scripts/Naja.js"></script>
+		<script src="{$basePath}/js/main.js"></script>
+		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		{/block}
+
+
+</body>
+</html>

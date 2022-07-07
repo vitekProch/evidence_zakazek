@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LattePluginSettings">
+    <option name="variableSettings">
+      <list>
+        <LatteVariableSettings VarName="tube_production" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
+        <LatteVariableSettings VarName="basePath" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
+        <LatteVariableSettings VarName="name" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
+        <LatteVariableSettings VarName="diameters_option" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
+        <LatteVariableSettings VarName="tube_diameters" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
+      </list>
+    </option>
+    <customMacroSettings>
+      <list>
+        <LatteTagSettings DeprecatedMessage="" MacroName="production" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="=" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="block" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="include" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="class" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="foreach" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+      </list>
+    </customMacroSettings>
+  </component>
+</project>

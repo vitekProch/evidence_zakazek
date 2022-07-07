@@ -1,0 +1,11 @@
+{block content}
+{if $user->isAllowed('register', 'view')}
+<h1 class="text-center title_margin" n:block=title>Registrace nového zaměstnance</h1>
+{include "../@form.latte", name: signUpForm}
+{else}
+<div class="alert-error title_margin">Nemáte oprávění pro vstup!</div>
+<div class="text-center">
+    <a class="btn btn-outline-dark" n:href="Homepage:">Vytvořit zakázku</a>
+    <a class="btn btn-outline-dark" n:href="Sign:out">Odhlásit se</a>
+</div>
+{/if}

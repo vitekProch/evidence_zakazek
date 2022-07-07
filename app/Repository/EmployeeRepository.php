@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Repository;
+
+
+class EmployeeRepository extends BaseRepository
+{
+    public function insertShift($shift_id, $employee_id)
+    {
+        $this->database->query('UPDATE employee SET shift_id = ? WHERE employee_id = ?', $shift_id, $employee_id);
+    }
+    public function getShift($employee_id)
+    {
+        return $this->database->query('SELECT shift_id FROM employee WHERE employee_id LIKE ?."%"', $employee_id);
+    }
+}

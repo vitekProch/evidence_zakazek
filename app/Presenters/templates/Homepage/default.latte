@@ -1,0 +1,34 @@
+{block content}
+<h1 class="text-center title_margin" n:block=title>Nové zakázky</h1>
+{include "../@form.latte", name: orderTubeForm}
+
+<script src="{$basePath}/js/tubeForm.js"></script>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Číslo zakázky</th>
+                    <th scope="col">Jméno Pracovníka</th>
+                    <th scope="col">Průměr Ø </th>
+                    <th scope="col">Počet kusů</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Směna</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $tube_production as $production}
+                <tr>
+                    <th scope="row">{$production->order_id}</th>
+                    <td>{$production->name}</td>
+                    <td>Ø {$production->diameter}</td>
+                    <td>{$production->made_quantity}</td>
+                    <td>{$production->create_date|date:'d-m-Y'}</td>
+                    <td>{$production->shift_name}</td>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

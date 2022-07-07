@@ -1,0 +1,21 @@
+services:
+	- App\Router\RouterFactory::createRouter
+
+	- App\Repository\BaseRepository
+	- App\Repository\TubeProductionRepository
+	- App\Repository\EmployeeRepository
+	- App\Repository\TubeDiameterRepository
+
+	- App\Forms\FormFactory
+	- App\Forms\SignInFormFactory
+	- App\Forms\SignUpFormFactory
+
+	- App\Model\EmployeeModel
+	- App\Model\Facades\UserManager
+	- App\Model\TubeProductionModel
+	- App\Model\TubeDiameterModel
+
+	- App\Model\My_AuthorizatorFactory
+	-
+	    class: Nette\Security\Permission
+	    factory: @App\Model\My_AuthorizatorFactory::create

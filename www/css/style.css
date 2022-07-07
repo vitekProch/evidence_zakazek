@@ -1,0 +1,13 @@
+.alert-error,.error{
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #492424;
+    background-color: #ea8989;
+    text-align: center;
+}
+.title_margin{
+    margin-top: 100px;
+}
