@@ -31,7 +31,7 @@ final class HomepagePresenter extends BasePresenter
         $this->template->tube_diameters = $tube_diameters;
     }
 
-            protected function createComponentOrderTubeForm(): Form
+    protected function createComponentOrderTubeForm(): Form
     {
         $form = new Form;
         $form->addText('order_id', 'číslo zakázky')

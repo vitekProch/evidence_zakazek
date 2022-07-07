@@ -12,6 +12,8 @@
 					<th scope="col">Počet kusů</th>
 					<th scope="col">Datum</th>
 					<th scope="col">Směna</th>
+					<th scope="col">Upravit</th>
+					<th scope="col">Odstranit</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -23,6 +25,8 @@
 					<td>{$production->made_quantity}</td>
 					<td>{$production->create_date|date:'d-m-Y'}</td>
 					<td>{$production->shift_name}</td>
+					<td><a class="btn btn-success" n:href="edit $production->id" ">EDIT</a></td>
+
 				{/foreach}
 				</tbody>
 			</table>
