@@ -43,4 +43,12 @@ class TubeProductionModel
     {
         $this->tubeProductionRepository->updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id);
     }
+    public function getSpecificDiameter($id)
+    {
+        return $this->tubeProductionRepository->getSpecificDiameter($id);
+    }
+    public function getSpecificShift($id)
+    {
+        return $this->tubeProductionRepository->getSpecificShift($id);
+    }
 }

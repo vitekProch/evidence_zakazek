@@ -2,7 +2,6 @@
 
 namespace App\Presenters;
 
-use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 
 class TubeProductionPresenter extends BasePresenter
@@ -26,8 +25,8 @@ class TubeProductionPresenter extends BasePresenter
         if (!$users_value) {
             $this->error('Uživatel nebyl nalezen');
         }
+        bdump($users_value->toArray());
         $this['editForm']->setDefaults($users_value->toArray());
-
     }
 
     protected function createComponentEditForm(): Form
@@ -49,8 +48,7 @@ class TubeProductionPresenter extends BasePresenter
             '8' => 'Ø 22',
         ];
 
-        $form->addSelect('diameter', 'Průměr: ', $diameter)
-            ->setDefaultValue('1');
+        $form->addSelect('tube_diameter', 'Průměr: ', $diameter);
 
         $form->addText('made_quantity', 'počet kusů')
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
@@ -63,9 +61,10 @@ class TubeProductionPresenter extends BasePresenter
             '3' => 'Noční',
         ];
 
-        $form->addSelect('shift', 'Směna: ', $shifts);
-
+        $form->addSelect('shift_id', 'Směna: ', $shifts);
+        $form->setDefaults(["shift" => 3, "diameter" => 2]);
         $form->addSubmit('send', 'Uložit');
+
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
     }
@@ -74,9 +73,9 @@ class TubeProductionPresenter extends BasePresenter
        $this->tubeProductionModel->updateNewData(
            $values['id'],
            $values['order_id'],
-           $values['diameter'],
+           $values['tube_diameter'],
            $values['made_quantity'],
-           $values['shift']);
+           $values['shift_id']);
 
         $this->flashMessage('Zakázka byla upravena.', 'success');
         $this->redirect('TubeProduction:production');
