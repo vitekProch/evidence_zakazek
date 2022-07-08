@@ -39,8 +39,8 @@ class TubeProductionModel
     {
         return $this->tubeProductionRepository->getOrderById();
     }
-    public function updateNewData($order_id, $employee_id, $tube_diameter, $made_quantity, $shift_id)
+    public function updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id)
     {
-        $this->tubeProductionRepository->updateNewData($order_id, $employee_id, $tube_diameter, $made_quantity, $shift_id);
+        $this->tubeProductionRepository->updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id);
     }
 }

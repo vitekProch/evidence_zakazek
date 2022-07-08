@@ -16,14 +16,18 @@
                     <th scope="col">Odstranit</th>
                 </tr>
                 </thead>
-                <tr class="table-active">
-                    <th scope="row">{$order_id->order_id}</th>
-                    <td>{$order_id->employee_id}</td>
-                    <form n:name=editForm>
-                        <td><input n:name=order_id></td>
+                <form n:name=editForm>
+                    <tr>
+                        <th scope="row"><input n:name=order_id></th>
+                        <td>Vit</td>
+                        <td><select n:name=diameter></select></td>
+                        <td><input n:name= made_quantity></td>
+                        <td>DATE</td>
+                        <td><select n:name=shift></select></td>
                         <td><input class="btn btn-success" n:name=send></td>
-                    </form>
-                </tr>
+
+                    </tr>
+                </form>
                 <tbody>
                 {foreach $tube_production as $production}
                 <tr>

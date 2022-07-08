@@ -45,11 +45,12 @@ class TubeProductionRepository extends BaseRepository
             'shift_id' => $shift_id,
         ]);
     }
-    public function updateNewData($order_id, $employee_id, $tube_diameter, $made_quantity, $shift_id)
+    public function updateNewData($id , $order_id, $tube_diameter, $made_quantity, $shift_id)
     {
-        $this->database->table('tube_production')->update([
+        $this->database->table('tube_production')
+            ->where('id', $id)
+            ->update([
             'order_id' => $order_id,
-            'employee_id' => $employee_id,
             'tube_diameter' => $tube_diameter,
             'made_quantity' => $made_quantity,
             'shift_id' => $shift_id,

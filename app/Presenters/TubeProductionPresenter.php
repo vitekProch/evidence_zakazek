@@ -27,6 +27,7 @@ class TubeProductionPresenter extends BasePresenter
             $this->error('Uživatel nebyl nalezen');
         }
         $this['editForm']->setDefaults($users_value->toArray());
+
     }
 
     protected function createComponentEditForm(): Form
@@ -36,9 +37,7 @@ class TubeProductionPresenter extends BasePresenter
             ->addRule($form::LENGTH, 'Číslo zakázky může být krátné minimálně 6 číslic',[6,7])
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
             ->setRequired('Vyplňte prosím %label');
-        $form->addText('employee_id', 'Jméno pracovníka')
-            ->setRequired('Vyplňte prosím %label');
-
+        $form->addHidden('id');
         $diameter = [
             '1' => 'Ø 6x1',
             '2' => 'Ø 6x0.8',
@@ -51,7 +50,7 @@ class TubeProductionPresenter extends BasePresenter
         ];
 
         $form->addSelect('diameter', 'Průměr: ', $diameter)
-            ->setDefaultValue('2');
+            ->setDefaultValue('1');
 
         $form->addText('made_quantity', 'počet kusů')
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
@@ -68,19 +67,18 @@ class TubeProductionPresenter extends BasePresenter
 
         $form->addSubmit('send', 'Uložit');
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
-
         return $form;
     }
     public function editFormSucceeded(Form $form, array $values): void
     {
        $this->tubeProductionModel->updateNewData(
-           $values->order_id,
-           $values->employee_id,
-           $values->diameter,
-           $values->made_quantity,
-           $values->shift);
+           $values['id'],
+           $values['order_id'],
+           $values['diameter'],
+           $values['made_quantity'],
+           $values['shift']);
 
         $this->flashMessage('Zakázka byla upravena.', 'success');
-        $this->redirect('AdminProfile:admin');
+        $this->redirect('TubeProduction:production');
     }
 }
