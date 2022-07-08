@@ -3,38 +3,25 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col">
+            {include "./production.latte"}
             <table class="table table-bordered">
-                <thead>
                 <tr>
-                    <th scope="col">Číslo zakázky</th>
-                    <th scope="col">Jméno Pracovníka</th>
-                    <th scope="col">Průměr Ø </th>
-                    <th scope="col">Počet kusů</th>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Směna</th>
-                    <th scope="col">Upravit</th>
-                    <th scope="col">Odstranit</th>
-                </tr>
-                </thead>
-                <tr class="table-active">
-                    <th scope="row">{$order_id->order_id}</th>
-                    <td>{$order_id->employee_id}</td>
                     <form n:name=editForm>
                         <td><input n:name=order_id></td>
-                        <td><input class="btn btn-success" n:name=send></td>
+                        <td>Vitalij Procházka</td>
+                        <td>
+                            <select n:name=diameter></select>
+                        </td>
+                        <td><input n:name=made_quantity></td>
+                        <td>12-2-200</td>
+                        <td>
+                            <select n:name=shift></select>
+                        </td>
+                        <td>
+                            <button n:name=send>Uložit</button>
+                        </td>
                     </form>
                 </tr>
-                <tbody>
-                {foreach $tube_production as $production}
-                <tr>
-                    <th scope="row">{$production->order_id}</th>
-                    <td>{$production->name}</td>
-                    <td>Ø {$production->diameter}</td>
-                    <td>{$production->made_quantity}</td>
-                    <td>{$production->create_date|date:'d-m-Y'}</td>
-                    <td>{$production->shift_name}</td>
-                    {/foreach}
-                </tbody>
             </table>
         </div>
     </div>
