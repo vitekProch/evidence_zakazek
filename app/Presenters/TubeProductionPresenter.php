@@ -15,9 +15,11 @@ class TubeProductionPresenter extends BasePresenter
     {
         $tube_production = $this->tubeProductionModel->getTubeProduction();
         $order_id = $this->tubeProductionModel->getOrderById()->get($id);
-
+        $employee_name = $this->employeeModel->getEmployeeName($order_id->employee_id);
+        bdump($employee_name);
         $this->template->tube_production = $tube_production;
         $this->template->order_id = $order_id;
+        $this->template->employee_name = $employee_name;
     }
     public function actionEdit(int $id): void
     {
@@ -25,7 +27,6 @@ class TubeProductionPresenter extends BasePresenter
         if (!$users_value) {
             $this->error('Uživatel nebyl nalezen');
         }
-        bdump($users_value->toArray());
         $this['editForm']->setDefaults($users_value->toArray());
     }
 

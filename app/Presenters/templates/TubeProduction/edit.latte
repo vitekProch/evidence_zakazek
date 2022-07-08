@@ -6,7 +6,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Číslo zakázky</th>
+                    <th class="mensi" scope="col">Číslo zakázky</th>
                     <th scope="col">Jméno Pracovníka</th>
                     <th scope="col">Průměr Ø </th>
                     <th scope="col">Počet kusů</th>
@@ -16,31 +16,28 @@
                     <th scope="col">Odstranit</th>
                 </tr>
                 </thead>
-                <form n:name=editForm>
-                    <tr>
-                        <th scope="row"><input n:name=order_id></th>
-                        <td>Vit</td>
-                        <td><select n:name=tube_diameter></select></td>
-                        <td><input n:name= made_quantity></td>
-                        <td>DATE</td>
-                        <td><select n:name=shift_id>
-                                <option n:name=1>1</option>
-                                <option n:name=2>2</option>
-                                <option n:name=3>3</option>
-                            </select></td>
-                        <td><input class="btn btn-success" n:name=send></td>
-
-                    </tr>
-                </form>
                 <tbody>
+                <tr>
+                    <form n:name=editForm>
+                        <th><input class="mensii" n:name=order_id></th>
+                        <td>{$employee_name}</td>
+                        <td><select n:name=tube_diameter></select></td>
+                        <td><input class="mensii" n:name= made_quantity></td>
+                        <td class="">{$order_id->create_date|date:'d-m-Y'}</td>
+                        <td><select n:name=shift_id></select></td>
+                        <td><input class="btn btn-success" n:name=send></td>
+                    </form>
+                </tr>
                 {foreach $tube_production as $production}
                 <tr>
-                    <th scope="row">{$production->order_id}</th>
+                    <th>{$production->order_id}</th>
                     <td>{$production->name}</td>
                     <td>Ø {$production->diameter}</td>
                     <td>{$production->made_quantity}</td>
                     <td>{$production->create_date|date:'d-m-Y'}</td>
                     <td>{$production->shift_name}</td>
+                    <td></td>
+                    <td></td>
                     {/foreach}
                 </tbody>
             </table>

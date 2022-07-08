@@ -27,18 +27,22 @@ class TubeProductionModel
     {
         $this->tubeProductionRepository->insertNewData($order_id, $employee_id, $tube_diameter, $made_quantity, $shift_id);
     }
+
     public function searchOrderByOrderId($order_id): ResultSet
     {
         return $this->tubeProductionRepository->searchOrderByOrderId($order_id);
     }
+
     public function getLastDiameter(): string
     {
         return $this->tubeProductionRepository->getLastDiameter();
     }
+
     public function getOrderById()
     {
         return $this->tubeProductionRepository->getOrderById();
     }
+
     public function updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id)
     {
         $this->tubeProductionRepository->updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id);
