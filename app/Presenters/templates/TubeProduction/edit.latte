@@ -17,7 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="table-active">
                     <form n:name=editForm>
                         <th><input class="mensii" n:name=order_id></th>
                         <td>{$employee_name}</td>
@@ -25,7 +25,7 @@
                         <td><input class="mensii" n:name= made_quantity></td>
                         <td class="">{$order_id->create_date|date:'d-m-Y'}</td>
                         <td><select n:name=shift_id></select></td>
-                        <td><input class="btn btn-success" n:name=send></td>
+                        <td><input class="btn btn-success" n:name=save></td>
                     </form>
                 </tr>
                 {foreach $tube_production as $production}

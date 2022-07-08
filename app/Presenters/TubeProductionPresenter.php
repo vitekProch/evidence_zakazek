@@ -29,6 +29,10 @@ class TubeProductionPresenter extends BasePresenter
         }
         $this['editForm']->setDefaults($users_value->toArray());
     }
+    public function handleDelete(): void
+    {
+        // ... processing of signal ...
+    }
 
     protected function createComponentEditForm(): Form
     {
@@ -64,7 +68,7 @@ class TubeProductionPresenter extends BasePresenter
 
         $form->addSelect('shift_id', 'Směna: ', $shifts);
         $form->setDefaults(["shift" => 3, "diameter" => 2]);
-        $form->addSubmit('send', 'Uložit');
+        $form->addSubmit('save', 'Uložit');
 
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
         return $form;
