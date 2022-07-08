@@ -64,25 +64,6 @@ class TubeProductionRepository extends BaseRepository
         foreach ($tube as $tub) {
             $last_diameter = $tub->tube_diameter;
         }
-        bdump($last_diameter);
         return $last_diameter;
-    }
-    public function getSpecificDiameter($id): string{
-        $specificDiameter = '1';
-        $tube = $this->database->table('tube_production');
-        $tube->where('id', $id);
-        foreach ($tube as $tub) {
-            $specificDiameter = $tub->tube_diameter;
-        }
-        return $specificDiameter;
-    }
-    public function getSpecificShift($id): int{
-        $specificShift = "1";
-        $tube = $this->database->table('tube_production');
-        $tube->where('id', $id);
-        foreach ($tube as $tub) {
-            $specificShift = $tub->shift_id;
-        }
-        return $specificShift;
     }
 }
