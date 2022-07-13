@@ -47,4 +47,8 @@ class TubeProductionModel
     {
         $this->tubeProductionRepository->updateNewData($id, $order_id, $tube_diameter, $made_quantity, $shift_id);
     }
+    public function deleteRecord($id)
+    {
+        $this->tubeProductionRepository->deleteRecord($id);
+    }
 }

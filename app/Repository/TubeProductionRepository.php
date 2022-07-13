@@ -66,4 +66,10 @@ class TubeProductionRepository extends BaseRepository
         }
         return $last_diameter;
     }
+
+    public function deleteRecord($id)
+    {
+        $this->database->query('DELETE FROM tube_production WHERE id = ?',$id);
+    }
+
 }

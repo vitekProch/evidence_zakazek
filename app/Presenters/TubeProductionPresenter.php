@@ -23,15 +23,17 @@ class TubeProductionPresenter extends BasePresenter
     }
     public function actionEdit(int $id): void
     {
-        $users_value = $this->tubeProductionModel->getOrderById()->get($id);
-        if (!$users_value) {
+        $order_value = $this->tubeProductionModel->getOrderById()->get($id);
+        if (!$order_value) {
             $this->error('Uživatel nebyl nalezen');
         }
-        $this['editForm']->setDefaults($users_value->toArray());
+        $this['editForm']->setDefaults($order_value->toArray());
     }
-    public function handleDelete(): void
+    public function handleDelete(int $id)
     {
-        // ... processing of signal ...
+        $this->tubeProductionModel->deleteRecord($id);
+        $this->flashMessage('Zakázka byla odstraněna.', 'success');
+        $this->redirect('TubeProduction:production');
     }
 
     protected function createComponentEditForm(): Form
