@@ -152,9 +152,9 @@ class Filters
 
 
 	/**
-	 * Escapes string for use inside CSS template.
+	 * Escapes string for use inside css template.
 	 * @param  string  $s  plain text
-	 * @return string CSS
+	 * @return string css
 	 */
 	public static function escapeCss($s): string
 	{
@@ -197,8 +197,8 @@ class Filters
 
 
 	/**
-	 * Escapes CSS/JS for usage in <script> and <style>..
-	 * @param  string  $s  CSS/JS
+	 * Escapes css/JS for usage in <script> and <style>..
+	 * @param  string  $s  css/JS
 	 * @return string HTML RAWTEXT
 	 */
 	public static function escapeHtmlRawText($s): string

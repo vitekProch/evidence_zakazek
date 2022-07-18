@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Presenters;
+
+use Nette;
+use Nette\Application\UI\Form;
 use App\Model\EmployeeModel;
 use App\Model\TubeDiameterModel;
-use Nette;
+use App\Model\TubeExcessModel;
 use App\Model\TubeProductionModel;
-use Nette\Application\UI\Form;
 
 class BasePresenter extends Nette\Application\UI\Presenter
 {
@@ -27,6 +29,12 @@ class BasePresenter extends Nette\Application\UI\Presenter
      */
     public TubeDiameterModel $tubeDiameterModel;
 
+    /**
+     * @var TubeExcessModel
+     * @inject
+     */
+    public TubeExcessModel $tubeExcessModel;
+
 
 
     protected function createComponentSearchForm()
@@ -46,12 +54,5 @@ class BasePresenter extends Nette\Application\UI\Presenter
     {
         $names = $this->user->getIdentity()->getData();
         $this->template->layout = $names;
-    }
-
-    protected function beforeRender(): void
-    {
-        parent::beforeRender();
-        $this->redrawControl('title');
-        $this->redrawControl('content');
     }
 }
