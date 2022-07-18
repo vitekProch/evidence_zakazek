@@ -15,22 +15,25 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<div class="collapse navbar-collapse" id="navbarExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link ajax" n:href="TubeProduction:production">Vyrobeno</a>
+					<a class="nav-link" n:href="TubeProduction:production">Vyrobeno</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" n:href="CreateExcess:createExcess">Zakázka navíc</a>
 				</li>
 				<li class="nav-item">
 					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link ajax">Registrovat</a>
 				</li>
 				<li class="nav-item">
 					{if $user->loggedIn}
-						<a class="nav-link ajax" n:href="Sign:out">Odhlásit</a>
+						<a class="nav-link" n:href="Sign:out">Odhlásit</a>
 					{else}
-						<a class="nav-link ajax" n:href="Sign:in">Přihlásit</a>
+						<a class="nav-link" n:href="Sign:in">Přihlásit</a>
 					{/if}
 				</li>
 			</ul>
@@ -49,9 +52,9 @@
 
 
 
-<main class="mainContent" n:snippet="content">
+<div class="container">
 {include content}
-</main>
+</div>
 		{block scripts}
 			<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 			<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>

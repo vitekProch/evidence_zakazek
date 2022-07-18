@@ -8,4 +8,24 @@ class TubeExcessRepository extends BaseRepository
     {
         return $this->database->query('SELECT * FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
     }
+    public function insertExcess($order_id, $quantity)
+    {
+        $this->database->table('tube_excess')->insert([
+            'order_id' => $order_id,
+            'quantity' => $quantity,
+        ]);
+    }
+
+    public function updateExcess($order_id, $quantity)
+    {
+        $this->database->query('
+            update tube_excess
+            set quantity = quantity + ?
+            WHERE order_id = ?', $quantity, $order_id);
+    }
+
+    public function checkExcess($order_id)
+    {
+        return $this->database->query('SELECT order_id FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
+    }
 }
