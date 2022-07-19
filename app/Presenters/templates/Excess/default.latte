@@ -1,24 +1,28 @@
 {if !is_null($data)}
 <div class="container">
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col col-sm-4">
-            <table class="table small table-bordered">
+        <div class="col-sm-3"></div>
+        <div class="col col-sm-6">
+            <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Zakázka navíc!</th>
                     <th scope="col">Počet navíc</th>
+                    <th scope="col">Upravit</th>
+                    <th scope="col">Odstranit</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{$data['order_id']}</td>
-                    <td>{$data['made_quantity']}</td>
+                    <td class="font-size">{$data['order_id']}</td>
+                    <td class="font-size">{$data['made_quantity']}</td>
+                    <td><button class="btn btn-outline-dark btn-sm">Upravit</button></td>
+                    <td><button class="btn btn-outline-dark btn-sm">Odstranit</button></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
 {/if}
