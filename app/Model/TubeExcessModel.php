@@ -30,6 +30,11 @@ class TubeExcessModel
         $this->tubeExcessRepository->updateExcess($order_id, $quantity);
     }
 
+    public function newExcessQuantity($order_id, $quantity)
+    {
+        $this->tubeExcessRepository->newExcessQuantity($order_id,$quantity);
+    }
+
     public function checkExcess($order_id)
     {
         return $this->tubeExcessRepository->checkExcess($order_id);

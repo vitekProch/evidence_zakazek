@@ -2,7 +2,6 @@ $(document).ready(function(){
         $("#frm-orderTubeForm-order_id").keyup(function()
         {
             var input = $(this).val();
-            //alert(input);
             if (input !== "") {
                 $.ajax({
                     url:"excess",
@@ -12,6 +11,7 @@ $(document).ready(function(){
                         $("#search_result").html(data);
                     }
                 })
+
             }
 
         });

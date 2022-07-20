@@ -15,9 +15,9 @@
                 <tbody>
                 <tr>
                     <td class="font-size">{$data['order_id']}</td>
-                    <td class="font-size">{$data['made_quantity']}</td>
-                    <td><button class="btn btn-outline-dark btn-sm">Upravit</button></td>
-                    <td><button class="btn btn-outline-dark btn-sm">Odstranit</button></td>
+                    <td class="font-size">{$data['quantity']}</td>
+                    <td><button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#reg-modal">Upravit</button></td>
+                    <td><button class="btn btn-outline-dark btn-sm" data-id="{$data['quantity']} data-role="update">Odstranit</button></td>
                 </tr>
                 </tbody>
             </table>
@@ -25,4 +25,35 @@
         <div class="col-sm-3"></div>
     </div>
 </div>
+    <!-- Modal -->
+    <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Upravte počet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">Zakázka navíc!</th>
+                            <th scope="col">Počet navíc</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input aria-disabled="false" readonly class="font-size text-center smaller border-0" id="orderId" value="{$data['order_id']}"></td>
+                            <td><input class="font-size text-center smaller" placeholder="{$data['quantity']}" id="quantity"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+                    <button type="button" class="btn btn-primary" onclick="updateExcess()">Uložit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {/if}
