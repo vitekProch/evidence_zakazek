@@ -6,7 +6,7 @@ use Nette\Application\UI\Form;
 
 class CreateExcessPresenter extends BasePresenter
 {
-    protected function createComponentExcessForm()
+    protected function createComponentExcessForm(): Form
     {
         $form = new Form();
         $form->addText('order_id', 'Číslo zakázky:')
@@ -23,10 +23,12 @@ class CreateExcessPresenter extends BasePresenter
         $form->onSuccess[] = [$this, 'ExcessFormSucceeded'];
         return $form;
     }
-    public function ExcessFormSucceeded($form, array $values): void
+
+
+    public function ExcessFormSucceeded(array $values): void
     {
-        $post = $this->tubeExcessModel->checkExcess($values['order_id']);
-        if(is_null($post)){
+        $excess = $this->tubeExcessModel->checkExcess($values['order_id']);
+        if(is_null($excess)){
             $this->tubeExcessModel->insertExcess(
                 $values['order_id'],
                 $values['quantity'],

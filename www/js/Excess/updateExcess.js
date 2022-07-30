@@ -1,7 +1,3 @@
-function DeleteData(id){
-    deleteExcess(id)
-}
-
 function deleteExcess(id){
     if (confirm("Opravdu smazat?")) {
         $.ajax({
