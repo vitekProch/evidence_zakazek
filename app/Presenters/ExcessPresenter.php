@@ -10,6 +10,7 @@ class ExcessPresenter extends HomepagePresenter
 
         $this->searchExcess();
         $this->updateExcess();
+        $this->deleteExcess();
 
     }
 
@@ -27,7 +28,17 @@ class ExcessPresenter extends HomepagePresenter
             $quantitySend = $_POST['quantityUpdate'];
             $orderId = $_POST['orderId'];
             $this->tubeExcessModel->newExcessQuantity($orderId, $quantitySend);
+            $data = $this->tubeExcessModel->findExcess($orderId);
+            $this->template->data = $data;
+
             $this->flashMessage('Proběhlo upravení existujicího záznamu', 'success');
+        }
+    }
+    public function deleteExcess()
+    {
+        if(isset($_POST['deleteId'])){
+            $excessId = $_POST['deleteId'];
+            $this->tubeExcessModel->deleteExcess($excessId);
         }
     }
 }

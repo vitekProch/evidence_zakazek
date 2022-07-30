@@ -23,6 +23,10 @@ class TubeExcessRepository extends BaseRepository
             set quantity = quantity + ?
             WHERE order_id = ?', $quantity, $order_id);
     }
+    public function deleteExcess($excess_id)
+    {
+        $this->database->query('DELETE FROM tube_excess WHERE order_id = ?',$excess_id);
+    }
 
     public function newExcessQuantity($order_id, $quantity)
     {

@@ -39,4 +39,8 @@ class TubeExcessModel
     {
         return $this->tubeExcessRepository->checkExcess($order_id);
     }
+    public function deleteExcess($excessId)
+    {
+        $this->tubeExcessRepository->deleteExcess($excessId);
+    }
 }

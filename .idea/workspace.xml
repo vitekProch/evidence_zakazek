@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="579440eb-2105-48b3-bdd9-e872bbc49635" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/www/js/ExcessUpdate/updateExcess.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Model/TubeExcessModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/TubeExcessModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Presenters/ExcessPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/ExcessPresenter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/js/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/HomeForm/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/ExcessUpdate/updateExcess.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/ExcessUpdate/updateExcess.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,17 +58,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/zakazky",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/zakazky&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\nette-blog\www" />
@@ -109,6 +107,13 @@
       <workItem from="1658178635569" duration="5935000" />
       <workItem from="1658222994888" duration="5801000" />
       <workItem from="1658307167993" duration="8248000" />
+      <workItem from="1659179848503" duration="2000" />
+      <workItem from="1659179858922" duration="338000" />
+      <workItem from="1659180813946" duration="13000" />
+      <workItem from="1659180837019" duration="4000" />
+      <workItem from="1659180861408" duration="37000" />
+      <workItem from="1659181507658" duration="7170000" />
+      <workItem from="1659204646420" duration="1286000" />
     </task>
     <servers />
   </component>
@@ -125,5 +130,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
