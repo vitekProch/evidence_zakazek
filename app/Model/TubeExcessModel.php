@@ -16,6 +16,11 @@ class TubeExcessModel
         $this->tubeExcessRepository = $tubeExcessRepository;
     }
 
+    public function getExcess()
+    {
+        return $this->tubeExcessRepository->getExcess();
+    }
+
     public function findExcess($order_id)
     {
         return $this->tubeExcessRepository->findExcess($order_id);

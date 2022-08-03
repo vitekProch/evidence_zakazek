@@ -2,9 +2,17 @@
 
 namespace App\Repository;
 
+use Nette\Database\ResultSet;
+use Nette\Database\Row;
+
 class TubeExcessRepository extends BaseRepository
 {
-    public function findExcess($order_id)
+    public function getExcess(): ResultSet
+    {
+        return $this->database->query('SELECT * FROM tube_excess');
+    }
+
+    public function findExcess($order_id): ?Row
     {
         return $this->database->query('SELECT * FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
     }
@@ -36,7 +44,7 @@ class TubeExcessRepository extends BaseRepository
             WHERE order_id = ?', $quantity, $order_id);
     }
 
-    public function checkExcess($order_id)
+    public function checkExcess($order_id): ?Row
     {
         return $this->database->query('SELECT order_id FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
     }

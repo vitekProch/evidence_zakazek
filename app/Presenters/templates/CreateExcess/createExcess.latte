@@ -2,8 +2,54 @@
 <h1 class="text-center title_margin" n:block=title>Zakázky navíc</h1>
 <div class="container">
     <div class="row">
-        <div class="col">
-            {include "../@form.latte", name: excessForm}
+        <div class="col mt-5">
+            <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+            <form n:name=excessForm>
+                <table class="m-auto table_background">
+                    <tr>
+                        <th class="text-right pr-2"><label n:name=order_id>Číslo zakázky navíc:  </label></th>
+                        <td><input id="idExcess" class="form-control" n:name=order_id></td>
+                    </tr>
+                    <tr>
+                        <th class="text-right pr-2"><label n:name=quantity>Počet navíc:  </label></th>
+                        <td><input id="quantityExcess" class="form-control" n:name=quantity></td>
+                    </tr>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <td>
+                            <input n:name=save class="btn btn-outline-dark">
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
+    </div>
+    </div>
+    <div class="row mt-5 text-center">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Číslo zakázky navíc</th>
+                    <th scope="col">Počet kusů navíc</th>
+                    <th scope="col">Upravit</th>
+                    <th scope="col">Smazat</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $getExcess as $Excess}
+                <tr>
+                    <th scope="row">{$Excess->order_id}</th>
+                    <td>{$Excess->quantity}</td>
+                    <td><a class="btn btn-success">Upravit</a></td>
+                    <td><a class="btn btn-danger" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3"></div>
     </div>
 </div>
