@@ -16,8 +16,6 @@ class CreateExcessPresenter extends BasePresenter
     protected function createComponentExcessForm(): Form
     {
         $form = new Form();
-        $form->getElementPrototype()->class = 'ajax';
-        $form->setMethod('POST');
         $form->addText('order_id', 'Číslo zakázky:')
             ->addRule($form::LENGTH, 'Číslo zakázky může být krátné minimálně 6 číslic',[6,7])
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
@@ -35,8 +33,6 @@ class CreateExcessPresenter extends BasePresenter
 
     public function send(SubmitButton $button) {
         $values = $button->getForm()->getValues();
-        bdump($this->isAjax());
-        if ($this->isAjax()) {
             $excess = $this->tubeExcessModel->checkExcess($values['order_id']);
             if(is_null($excess)){
                 $this->tubeExcessModel->insertExcess(
@@ -48,9 +44,7 @@ class CreateExcessPresenter extends BasePresenter
                 $this->tubeExcessModel->updateExcess($values['order_id'], $values['quantity']);
                 $this->flashMessage('Proběhlo upravení existujicího záznamu', 'success');
             }
-        } else {
-            $this->redirect('this');
-        }
+            $this->redirect("CreateExcess:createExcess");
     }
 
 }
