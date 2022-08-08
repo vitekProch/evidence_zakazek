@@ -13,8 +13,10 @@
 					<th scope="col">Počet kusů</th>
 					<th scope="col">Datum</th>
 					<th scope="col">Směna</th>
+					{if $user->loggedIn}
 					<th scope="col">Upravit</th>
 					<th scope="col">Odstranit</th>
+					{/if}
 				</tr>
 				</thead>
 				<tbody>
@@ -26,8 +28,10 @@
 					<td>{$production->made_quantity}</td>
 					<td>{$production->create_date|date:'d-m-Y'}</td>
 					<td>{$production->shift_name}</td>
+					{if $user->loggedIn AND $production->employee_id == $user->id}
 					<td><a class="btn btn-success" n:href="edit $production->id">Upravit</a></td>
 					<td><a class="btn btn-danger" n:href="delete!, id => $production->id" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+					{/if}
 				{/foreach}
 				</tbody>
 			</table>

@@ -27,7 +27,7 @@
 					<a class="nav-link" n:href="CreateExcess:createExcess">Zakázka navíc</a>
 				</li>
 				<li class="nav-item">
-					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link ajax">Registrovat</a>
+					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link">Registrovat</a>
 				</li>
 				<li class="nav-item">
 					{if $user->loggedIn}

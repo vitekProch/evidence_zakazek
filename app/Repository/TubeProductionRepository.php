@@ -9,7 +9,7 @@ class TubeProductionRepository extends BaseRepository
     public function getTubeProduction(): ResultSet
     {
         return $this->database->query('
-            SELECT tube_production.id, order_id, employee.name, diameter, made_quantity, create_date, shift_name 
+            SELECT tube_production.id, order_id, employee.name, employee.employee_id, diameter, made_quantity, create_date, shift_name 
             FROM tube_production 
             INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
             INNER JOIN shift ON tube_production.shift_id = shift.shift_id
