@@ -5,6 +5,7 @@ services:
 	- App\Repository\TubeProductionRepository
 	- App\Repository\EmployeeRepository
 	- App\Repository\TubeDiameterRepository
+	- App\Repository\TubeExcessRepository
 
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
@@ -14,6 +15,7 @@ services:
 	- App\Model\Facades\UserManager
 	- App\Model\TubeProductionModel
 	- App\Model\TubeDiameterModel
+	- App\Model\TubeExcessModel
 
 	- App\Model\My_AuthorizatorFactory
 	-

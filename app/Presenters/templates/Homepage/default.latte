@@ -1,10 +1,17 @@
 {block content}
 <h1 class="text-center title_margin" n:block=title>Nové zakázky</h1>
-{include "../@form.latte", name: orderTubeForm}
-
-<script src="{$basePath}/js/tubeForm.js"></script>
 <div class="container mt-5">
+    <div class="row text-center">
+        <div class="col">
+            <div class="ajax" id="search_result"></div>
+        </div>
+    </div>
     <div class="row">
+        <div class="col">
+            {include "../@form.latte", name: orderTubeForm}
+        </div>
+    </div>
+    <div class="row mt-5">
         <div class="col">
             <table class="table table-bordered">
                 <thead>

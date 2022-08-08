@@ -8,7 +8,7 @@ use Nette\Application\UI\Form;
 
 
 
-final class HomepagePresenter extends BasePresenter
+class HomepagePresenter extends BasePresenter
 {
     public function startup()
     {
@@ -19,7 +19,7 @@ final class HomepagePresenter extends BasePresenter
             $this->redirect('Sign:in');
         }
     }
-    public function renderDefault()
+    public function renderDefault($data)
     {
         $tube_diameters = $this->tubeDiameterModel->getDiameters();
         $tube_production = $this->tubeProductionModel->getTubeProduction();
@@ -29,6 +29,9 @@ final class HomepagePresenter extends BasePresenter
 
         $this->template->tube_production = $tube_production;
         $this->template->tube_diameters = $tube_diameters;
+        if (!isset($this->template->data)) {
+            $this->template->data = $data;
+        }
     }
 
     protected function createComponentOrderTubeForm(): Form

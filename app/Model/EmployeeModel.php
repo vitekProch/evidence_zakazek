@@ -25,4 +25,8 @@ class EmployeeModel
     {
         return $this->employeeRepository->getShift($employee_id);
     }
+    public function getEmployeeName($employee_id)
+    {
+        return $this->employeeRepository->getEmployeeName($employee_id);
+    }
 }

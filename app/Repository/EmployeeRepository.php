@@ -13,4 +13,8 @@ class EmployeeRepository extends BaseRepository
     {
         return $this->database->query('SELECT shift_id FROM employee WHERE employee_id LIKE ?."%"', $employee_id);
     }
+    public function getEmployeeName($employee_id)
+    {
+        return $this->database->query('SELECT name FROM employee WHERE employee_id = ?', $employee_id)->fetchField();
+    }
 }

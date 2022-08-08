@@ -71,7 +71,7 @@ class DomQuery extends \SimpleXMLElement
 
 
 	/**
-	 * Transforms CSS expression to XPath.
+	 * Transforms css expression to XPath.
 	 */
 	public static function css2xpath(string $css): string
 	{

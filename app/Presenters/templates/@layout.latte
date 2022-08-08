@@ -9,20 +9,22 @@
 </head>
 
 <body>
-{$name = "mahulena 'cikanovna ! / // asd"}
 <div class="container">
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<div class="collapse navbar-collapse" id="navbarExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link ajax" n:href="TubeProduction:production">Vyrobeno</a>
+					<a class="nav-link" n:href="TubeProduction:production">Vyrobeno</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" n:href="CreateExcess:createExcess">Zakázka navíc</a>
 				</li>
 				<li class="nav-item">
 					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link">Registrovat</a>
@@ -50,18 +52,17 @@
 
 
 
-<main class="mainContent" n:snippet="content">
+<div class="container">
 {include content}
-</main>
-
+</div>
 		{block scripts}
-		<script></script>
-		<script src="{$basePath}/scripts/Naja.js"></script>
-		<script src="{$basePath}/js/main.js"></script>
-		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script src="{$basePath}/js/nette.ajax.js-master/nette.ajax.js"></script>
+			<script src="{$basePath}/js/Main/main.js"></script>
+			<script src="{$basePath}/js/HomeForm/form.js"></script>
+			<script src="{$basePath}/js/Excess/updateExcess.js"></script>
+			<script src="{$basePath}/js/Excess/showExcess.js"></script>
+			<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
 		{/block}
-
-
 </body>
 </html>
