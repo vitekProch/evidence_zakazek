@@ -9,9 +9,9 @@ class SearchPresenter extends BasePresenter
     protected function createComponentSearchForm()
     {
         $form = new Form;
-        $form->addText('search_value', 'Hledat:')
+        $form->addText('search_value', 'Search:')
             ->setRequired(TRUE);
-        $form->addSubmit('send', 'Search');
+        $form->addSubmit('send', 'Vyhledat');
         $form->onSuccess[] = [$this, 'searchFormSucceeded'];
         return $form;
     }

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="579440eb-2105-48b3-bdd9-e872bbc49635" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Presenters/CreateExcessPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/CreateExcessPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/SearchPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/SearchPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Homepage/default.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Homepage/default.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +63,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/zakazky",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "web-ide.project.structure",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/zakazky&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\nette-blog\www" />
@@ -125,6 +130,7 @@
       <workItem from="1659654861385" duration="44000" />
       <workItem from="1659971949530" duration="7989000" />
       <workItem from="1659981187497" duration="1030000" />
+      <workItem from="1660147599397" duration="5105000" />
     </task>
     <servers />
   </component>
