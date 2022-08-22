@@ -53,17 +53,7 @@ class TubeProductionPresenter extends BasePresenter
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
             ->setRequired('Vyplňte prosím %label');
         $form->addHidden('id');
-        $diameter = [
-            '1' => 'Ø 6x1',
-            '2' => 'Ø 6x0.8',
-            '3' => 'Ø 8',
-            '4' => 'Ø 10',
-            '5' => 'Ø 12',
-            '6' => 'Ø 15',
-            '7' => 'Ø 18',
-            '8' => 'Ø 22',
-        ];
-
+        $diameter = $this->tubeDiameterModel->getDiameters();
         $form->addSelect('tube_diameter', 'Průměr: ', $diameter);
 
         $form->addText('made_quantity', 'počet kusů')
