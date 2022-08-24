@@ -30,29 +30,19 @@
                             <td><button n:href="TubeProduction:production" class="btn btn-danger">Zrušit</button></td>
                         </form>
                     </tr>
-                    {foreach $tube_production as $production}
-                    <tr>
-                        <th>{$production->order_id}</th>
-                        <td>{$production->name}</td>
-                        <td>Ø {$production->diameter}</td>
-                        <td>{$production->made_quantity}</td>
-                        <td>{$production->create_date|date:'d-m-Y'}</td>
-                        <td>{$production->shift_name}</td>
-                        <td></td>
-                        <td></td>
-                        {/foreach}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-{/if}
-<div class="alert-error title_margin">Nemáte oprávění pro úpravu!</div>
-<div class="text-center">
-    {if $user->loggedIn}
-        <a class="btn btn-outline-dark" n:href="Homepage:">Vytvořit zakázku</a>
-        <a class="btn btn-outline-dark" n:href="Sign:out">Odhlásit</a>
     {else}
-        <a class="btn btn-outline-dark" n:href="Sign:in">Přihlásit</a>
-    {/if}
-</div>
+    <div class="alert-error title_margin">Nemáte oprávění pro úpravu!</div>
+    <div class="text-center">
+        {if $user->loggedIn}
+            <a class="btn btn-outline-dark" n:href="Homepage:">Vytvořit zakázku</a>
+            <a class="btn btn-outline-dark" n:href="Sign:out">Odhlásit</a>
+        {else}
+            <a class="btn btn-outline-dark" n:href="Sign:in">Přihlásit</a>
+        {/if}
+    </div>
+{/if}

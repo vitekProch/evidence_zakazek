@@ -29,7 +29,7 @@ class TubeExcessRepository extends BaseRepository
     {
         $this->database->query('
             update tube_excess
-            set quantity = quantity + ?, diameter_excess = ?
+            set quantity = quantity + ?, diameter_id = ?
             WHERE order_id = ?', $quantity, $diameters, $order_id);
     }
     public function deleteExcess($excess_id)

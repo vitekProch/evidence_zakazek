@@ -22,7 +22,7 @@ class TubeProductionPresenter extends BasePresenter
     }
     public function renderEdit(int $id): void
     {
-        $tube_production = $this->tubeProductionModel->getTubeProduction();
+        $tube_production = $this->tubeProductionModel->getTubeProduction(1,0);
         $order_id = $this->tubeProductionModel->getOrderById()->get($id);
         $employee_name = $this->employeeModel->getEmployeeName($order_id->employee_id);
         $employee_id = $order_id->toArray()["employee_id"];

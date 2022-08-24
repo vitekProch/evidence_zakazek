@@ -13,7 +13,7 @@ class TubeProductionRepository extends BaseRepository
             FROM tube_production 
             INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
             INNER JOIN shift ON tube_production.shift_id = shift.shift_id
-            INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.tube_diameter
+            INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.diameter_id
             ORDER BY create_date DESC
 			LIMIT ?
 			OFFSET ?',$limit, $offset);
@@ -35,7 +35,7 @@ class TubeProductionRepository extends BaseRepository
                 FROM tube_production 
                 INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
                 INNER JOIN shift ON tube_production.shift_id = shift.shift_id 
-                INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.tube_diameter
+                INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.diameter_id
                 WHERE order_id LIKE "%"?"%"
                 ORDER BY create_date DESC', $order_id);
         }
@@ -46,7 +46,7 @@ class TubeProductionRepository extends BaseRepository
         $this->database->table('tube_production')->insert([
             'order_id' => $order_id,
             'employee_id' => $employee_id,
-            'tube_diameter' => $tube_diameter,
+            'diameter_id' => $tube_diameter,
             'made_quantity' => $made_quantity,
             'shift_id' => $shift_id,
         ]);
@@ -57,7 +57,7 @@ class TubeProductionRepository extends BaseRepository
             ->where('id', $id)
             ->update([
             'order_id' => $order_id,
-            'tube_diameter' => $tube_diameter,
+            'diameter_id' => $tube_diameter,
             'made_quantity' => $made_quantity,
             'shift_id' => $shift_id,
         ]);
@@ -68,7 +68,7 @@ class TubeProductionRepository extends BaseRepository
         $tube->limit(1);
         $tube->order('create_date DESC');
         foreach ($tube as $tub) {
-            $last_diameter = $tub->tube_diameter;
+            $last_diameter = $tub->diameter_id;
         }
         return $last_diameter;
     }
