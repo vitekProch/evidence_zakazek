@@ -22,9 +22,10 @@ class HomepagePresenter extends BasePresenter
     public function renderDefault($data)
     {
         $tube_diameters = $this->tubeDiameterModel->getDiameters();
-        $tube_production = $this->tubeProductionModel->getTubeProduction();
+
+        $tube_production = $this->tubeProductionModel->getTubeProduction(5,0);
         $this['orderTubeForm']->setValues(array(
-            'diameter' => $this->tubeProductionModel->getLastDiameter()
+            'diameters' => $this->tubeProductionModel->getLastDiameter()
         ), true);
 
         $this->template->tube_production = $tube_production;
@@ -42,19 +43,8 @@ class HomepagePresenter extends BasePresenter
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
             ->setRequired('Vyplňte prosím %label');
 
-        $diameter = [
-            '1' => 'Ø 6x1',
-            '2' => 'Ø 6x0.8',
-            '3' => 'Ø 8',
-            '4' => 'Ø 10',
-            '5' => 'Ø 12',
-            '6' => 'Ø 15',
-            '7' => 'Ø 18',
-            '8' => 'Ø 22',
-        ];
-
-        $form->addSelect('diameter', 'Průměr: ', $diameter)
-            ->setDefaultValue('2');
+        $diameters = $this->tubeDiameterModel->getDiameters();
+        $form->addSelect('diameters', 'Průměr: ', $diameters);
 
         $form->addText('made_quantity', 'počet kusů')
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
@@ -68,7 +58,7 @@ class HomepagePresenter extends BasePresenter
     public function orderTubeFormSucceeded(\stdClass $data): void
     {
         $name = $this->user->getIdentity()->shift_id;
-        $this->tubeProductionModel->insertNewData($data->order_id, $this->getUser()->id, $data->diameter, $data->made_quantity,$name);
+        $this->tubeProductionModel->insertNewData($data->order_id, $this->getUser()->id, $data->diameters, $data->made_quantity,$name);
         $this->flashMessage('Zakázka byla uložena', 'success');
         $this->redirect('this');
     }

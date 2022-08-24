@@ -18,9 +18,14 @@ class TubeProductionModel
         $this->tubeProductionRepository = $tubeProductionRepository;
     }
 
-    public function getTubeProduction(): ResultSet
+    public function getTubeProduction(int $limit, int $offset): ResultSet
     {
-        return $this->tubeProductionRepository->getTubeProduction();
+        return $this->tubeProductionRepository->getTubeProduction($limit, $offset);
+    }
+
+    public function getCountAllProduction()
+    {
+        return $this->tubeProductionRepository->getCountAllProduction();
     }
 
     public function insertNewData($order_id, $employee_id, $tube_diameter, $made_quantity, $shift_id)

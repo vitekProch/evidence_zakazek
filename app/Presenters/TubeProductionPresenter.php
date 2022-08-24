@@ -3,14 +3,21 @@
 namespace App\Presenters;
 
 use Nette\Application\UI\Form;
-
+use Nette;
 class TubeProductionPresenter extends BasePresenter
 {
-    public function renderProduction()
-    {
-        $tube_production = $this->tubeProductionModel->getTubeProduction();
 
+    public function renderProduction(int $page = 1)
+    {
+        $productionCount = $this->tubeProductionModel->getCountAllProduction();
+        $paginator = new Nette\Utils\Paginator;
+        $paginator->setItemCount($productionCount); // celkový počet položek, je-li znám
+        $paginator->setItemsPerPage(11); // počet položek na stránce
+        $paginator->setPage($page); // číslo aktuální stránky
+
+        $tube_production = $this->tubeProductionModel->getTubeProduction($paginator->getLength(), $paginator->getOffset());
         $this->template->tube_production = $tube_production;
+        $this->template->paginator = $paginator;
 
     }
     public function renderEdit(int $id): void
@@ -53,17 +60,7 @@ class TubeProductionPresenter extends BasePresenter
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
             ->setRequired('Vyplňte prosím %label');
         $form->addHidden('id');
-        $diameter = [
-            '1' => 'Ø 6x1',
-            '2' => 'Ø 6x0.8',
-            '3' => 'Ø 8',
-            '4' => 'Ø 10',
-            '5' => 'Ø 12',
-            '6' => 'Ø 15',
-            '7' => 'Ø 18',
-            '8' => 'Ø 22',
-        ];
-
+        $diameter = $this->tubeDiameterModel->getDiameters();
         $form->addSelect('tube_diameter', 'Průměr: ', $diameter);
 
         $form->addText('made_quantity', 'počet kusů')

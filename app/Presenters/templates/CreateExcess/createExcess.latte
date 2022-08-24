@@ -1,4 +1,4 @@
-{block content}
+﻿{block content}
 <h1 class="text-center title_margin" n:block=title>Zakázky navíc</h1>
 <div class="container">
     <div class="row">
@@ -15,6 +15,10 @@
                         <td><input id="quantityExcess" class="form-control" n:name=quantity></td>
                     </tr>
                     <tr>
+                        <th class="text-right pr-2"><label n:name=diameters>Průměr:  </label></th>
+                        <td><select class="form-control" n:name=diameters></select></td>
+                    </tr>
+                    <tr>
                         <th>
 
                         </th>
@@ -28,13 +32,14 @@
     </div>
     </div>
     <div class="row mt-5 text-center">
-        <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-2"></div>
+        <div class="col-8">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Číslo zakázky navíc</th>
                     <th scope="col">Počet kusů navíc</th>
+                    <th scope="col">Průměr Ø</th>
                     <th scope="col">Upravit</th>
                     <th scope="col">Smazat</th>
                 </tr>
@@ -44,12 +49,13 @@
                 <tr>
                     <th scope="row">{$Excess->order_id}</th>
                     <td>{$Excess->quantity}</td>
+                    <td>{$Excess->diameter}</td>
                     <td><a class="btn btn-success">Upravit</a></td>
                     <td><a class="btn btn-danger" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
                     {/foreach}
                 </tbody>
             </table>
         </div>
-        <div class="col-3"></div>
+        <div class="col-2"></div>
     </div>
 </div>

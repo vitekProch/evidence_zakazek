@@ -25,6 +25,8 @@ class CreateExcessPresenter extends BasePresenter
             ->setRequired('Vyplňte prosím %label')
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
             ->addRule($form::MAX_LENGTH, 'Počet kusů může mít maximálně %d znaků', 4);
+        $diameters = $this->tubeDiameterModel->getDiameters();
+        $form->addSelect('diameters', 'Průměr: ', $diameters);
 
         $form->addSubmit('save', 'Uložit')
             ->onClick[] = [$this, 'send'];
@@ -38,10 +40,11 @@ class CreateExcessPresenter extends BasePresenter
                 $this->tubeExcessModel->insertExcess(
                     $values['order_id'],
                     $values['quantity'],
+                    $values['diameters'],
                 );
                 $this->flashMessage('Uložení proběhlo úspěšně', 'success');
             }else {
-                $this->tubeExcessModel->updateExcess($values['order_id'], $values['quantity']);
+                $this->tubeExcessModel->updateExcess($values['order_id'], $values['quantity'], $values['diameters']);
                 $this->flashMessage('Proběhlo upravení existujicího záznamu', 'success');
             }
             $this->redirect("CreateExcess:createExcess");

@@ -25,14 +25,14 @@ class TubeExcessModel
     {
         return $this->tubeExcessRepository->findExcess($order_id);
     }
-    public function insertExcess($order_id, $quantity)
+    public function insertExcess($order_id, $quantity, $diameter_excess)
     {
-        $this->tubeExcessRepository->insertExcess($order_id, $quantity);
+        $this->tubeExcessRepository->insertExcess($order_id, $quantity, $diameter_excess);
     }
 
-    public function updateExcess($order_id, $quantity)
+    public function updateExcess($order_id, $quantity, $diameters)
     {
-        $this->tubeExcessRepository->updateExcess($order_id, $quantity);
+        $this->tubeExcessRepository->updateExcess($order_id, $quantity, $diameters);
     }
 
     public function newExcessQuantity($order_id, $quantity)

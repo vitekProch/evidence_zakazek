@@ -14,7 +14,7 @@
                         <th scope="col">Datum</th>
                         <th scope="col">Směna</th>
                         <th scope="col">Upravit</th>
-                        <th scope="col">Odstranit</th>
+                        <th scope="col">Zrušit</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,6 +27,7 @@
                             <td class="">{$order_id->create_date|date:'d-m-Y'}</td>
                             <td><select class="text-center" n:name=shift_id></select></td>
                             <td><input class="btn btn-success" n:name=save></td>
+                            <td><button n:href="TubeProduction:production" class="btn btn-danger">Zrušit</button></td>
                         </form>
                     </tr>
                     {foreach $tube_production as $production}

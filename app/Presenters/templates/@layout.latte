@@ -40,8 +40,8 @@
 			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[name]}{/if}</div>
 
 			<form n:name="searchForm" class="form-inline my-lg-0">
-				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Search" aria-label="Search">
-				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send">
+				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Číslo zakázky" aria-label="Search">
+				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send" value="Vyhledat">
 			</form>
 		</div>
 	</nav>

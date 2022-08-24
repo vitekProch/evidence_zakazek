@@ -24,7 +24,7 @@
 				<tr>
 					<th scope="row">{$production->order_id}</th>
 					<td>{$production->name}</td>
-					<td>Ø {$production->diameter}</td>
+					<td>{$production->diameter}</td>
 					<td>{$production->made_quantity}</td>
 					<td>{$production->create_date|date:'d-m-Y'}</td>
 					<td>{$production->shift_name}</td>
@@ -38,3 +38,18 @@
 		</div>
 	</div>
 </div>
+<nav aria-label="Page navigation example">
+	<ul class="pagination justify-content-center">
+		{if !$paginator->isFirst()}
+			<li class="page-item"><a class="page-link" n:href="production, 1">První</a></li>
+			<li class="page-item"><a class="page-link" n:href="production, $paginator->page-1">Předchozí</a></li>
+		{/if}
+
+			<div class="page-item"><h6 class="page-link">Stránka {$paginator->getPage()} z {$paginator->getPageCount()}</h6> </div>
+
+		{if !$paginator->isLast()}
+			<li class="page-item"><a class="page-link" n:href="production, $paginator->getPage() + 1">Další</a></li>
+			<li class="page-item"><a class="page-link" n:href="production, $paginator->getPageCount()">Poslední</a></li>
+		{/if}
+	</ul>
+</nav>

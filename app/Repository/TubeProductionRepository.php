@@ -6,7 +6,7 @@ use Nette\Database\ResultSet;
 
 class TubeProductionRepository extends BaseRepository
 {
-    public function getTubeProduction(): ResultSet
+    public function getTubeProduction(int $limit, int $offset): ResultSet
     {
         return $this->database->query('
             SELECT tube_production.id, order_id, employee.name, employee.employee_id, diameter, made_quantity, create_date, shift_name 
@@ -14,7 +14,13 @@ class TubeProductionRepository extends BaseRepository
             INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
             INNER JOIN shift ON tube_production.shift_id = shift.shift_id
             INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.tube_diameter
-            ORDER BY create_date DESC ');
+            ORDER BY create_date DESC
+			LIMIT ?
+			OFFSET ?',$limit, $offset);
+    }
+    public function getCountAllProduction()
+    {
+        return $this->database->fetchField('SELECT COUNT(*) FROM tube_production');
     }
 
     public function getOrderById()
