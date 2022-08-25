@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="579440eb-2105-48b3-bdd9-e872bbc49635" name="Changes" comment="Hotovy pagginator">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Presenters/TubeProductionPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/TubeProductionPresenter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/edit.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/edit.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/TubeProductionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/TubeProductionRepository.php" afterDir="false" />
-    </list>
+    <list default="true" id="579440eb-2105-48b3-bdd9-e872bbc49635" name="Changes" comment="Hotovy pagginator" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +125,7 @@
       <workItem from="1659981187497" duration="1030000" />
       <workItem from="1661108128806" duration="4792000" />
       <workItem from="1661260386275" duration="8352000" />
-      <workItem from="1661357868049" duration="2209000" />
+      <workItem from="1661357868049" duration="2828000" />
     </task>
     <task id="LOCAL-00001" summary="Hotovy pagginator">
       <created>1661357969360</created>
