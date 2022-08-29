@@ -50,7 +50,7 @@
                     <th scope="row">{$Excess->order_id}</th>
                     <td>{$Excess->quantity}</td>
                     <td>{$Excess->diameter}</td>
-                    <td><a onclick="updateExcess()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#excess-update-modal">Upravit</a></td>
+                    <td><a class="btn btn-success">Upravit</a></td>
                     <td><a class="btn btn-danger" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
                     {/foreach}
                 </tbody>
@@ -58,40 +58,4 @@
         </div>
         <div class="col-2"></div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="excess-update-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"  >
-    <form n:name=edittForm>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">Upravte počet</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th scope="col">Zakázka navíc!</th>
-                                <th scope="col">Počet navíc</th>
-                                <th scope="col">Průměr</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr>
-                                <td><input class="text-center smaller" n:name=order_id></td>
-                                <td><input class="text-center smaller" n:name= made_quantity></td>
-                                <td><select class="text-center" n:name=tube_diameter></select></td>
-                            </tr>
-                            </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <input class="btn btn-primary" n:name=save>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>

@@ -14,7 +14,7 @@ class TubeExcessRepository extends BaseRepository
 
     public function findExcess($order_id): ?Row
     {
-        return $this->database->query('SELECT * FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
+        return $this->database->query('SELECT order_id, quantity, diameter FROM tube_excess INNER JOIN tube_diameter ON tube_excess.diameter_id = tube_diameter.diameter_id WHERE order_id = ?', $order_id)->fetch();
     }
     public function insertExcess($order_id, $quantity, $diameter_excess)
     {
