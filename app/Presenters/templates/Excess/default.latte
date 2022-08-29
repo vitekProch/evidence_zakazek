@@ -1,13 +1,15 @@
 {if !is_null($data)}
+    {dump $data}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col col-sm-6">
+        <div class="col-sm-2"></div>
+        <div class="col col-sm-8">
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Zakázka navíc!</th>
                     <th scope="col">Počet navíc</th>
+                    <th scope="col">Průměr Ø</th>
                     <th scope="col">Upravit</th>
                     <th scope="col">Odstranit</th>
                 </tr>
@@ -16,13 +18,14 @@
                 <tr>
                     <td class="font-size">{$data['order_id']}</td>
                     <td class="font-size">{$data['quantity']}</td>
+                    <td class="font-size">6x1</td>
                     <td><button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#reg-modal">Upravit</button></td>
                     <td><button class="btn btn-outline-dark btn-sm" data-id="{$data['order_id']}" onclick="deleteExcess({$data['order_id']})">Odstranit</button></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-2"></div>
     </div>
 </div>
     <!-- Modal -->

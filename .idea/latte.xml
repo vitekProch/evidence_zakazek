@@ -9,6 +9,9 @@
         <LatteVariableSettings VarName="paginator" VarType="mixed">
           <option name="vendor" value="OTHER" />
         </LatteVariableSettings>
+        <LatteVariableSettings VarName="test" VarType="mixed">
+          <option name="vendor" value="OTHER" />
+        </LatteVariableSettings>
       </list>
     </option>
   </component>

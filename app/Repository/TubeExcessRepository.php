@@ -49,4 +49,8 @@ class TubeExcessRepository extends BaseRepository
     {
         return $this->database->query('SELECT order_id FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
     }
+    public function getExcessByOrderId()
+    {
+        return $this->database->table('tube_excess');
+    }
 }

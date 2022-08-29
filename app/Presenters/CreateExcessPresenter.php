@@ -13,6 +13,17 @@ class CreateExcessPresenter extends BasePresenter
         $this->template->getExcess = $getExcess;
     }
 
+    public function renderEdit($id)
+    {
+        $this->setView('excess-update-modal');
+        $excess_value = $this->tubeExcessModel->getExcessByOrderId()->get($id);
+        if (!$excess_value) {
+            $this->error('Zakázka nebyla nalezena');
+        }
+        $this['edittForm']->setDefaults($excess_value->toArray());
+        bdump('neco');
+    }
+
     protected function createComponentExcessForm(): Form
     {
         $form = new Form();
@@ -49,5 +60,30 @@ class CreateExcessPresenter extends BasePresenter
             }
             $this->redirect("CreateExcess:createExcess");
     }
+    protected function createComponentEdittForm(): Form
+    {
+        $form = new Form;
+        $form->addText('order_id', 'order_id')
+            ->setDefaultValue('1234567');
+        $form->addText('made_quantity', 'počet kusů')
+            ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
+            ->addRule($form::MAX_LENGTH, 'Počet kusů může mít maximálně %d znaků', 4)
+            ->setRequired('Vyplňte prosím %label');
+        $diameter = $this->tubeDiameterModel->getDiameters();
+        $form->addSelect('tube_diameter', 'Průměr: ', $diameter);
+        $form->addSubmit('save', 'Uložit');
+        $form->onSuccess[] = [$this, 'editFormSucceeded'];
+        return $form;
+    }
+    public function editFormSucceeded(Form $form, array $values): void
+    {
+        $this->tubeExcessModel->updateExcess(
+            $values['order_id'],
+            $values['made_quantity'],
+            $values['tube_diameter'],
+        );
 
+        $this->flashMessage('Zakázka byla upravena.', 'success');
+        $this->redirect('CreateExcess:createExcess');
+    }
 }

@@ -48,4 +48,8 @@ class TubeExcessModel
     {
         $this->tubeExcessRepository->deleteExcess($excessId);
     }
+    public function getExcessByOrderId()
+    {
+        return $this->tubeExcessRepository->getExcessByOrderId();
+    }
 }
