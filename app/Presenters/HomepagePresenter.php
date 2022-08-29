@@ -23,7 +23,7 @@ class HomepagePresenter extends BasePresenter
     {
         $tube_diameters = $this->tubeDiameterModel->getDiameters();
 
-        $tube_production = $this->tubeProductionModel->getTubeProduction(5,0);
+        $tube_production = $this->tubeProductionModel->getTubeProduction(7,0);
         $this['orderTubeForm']->setValues(array(
             'diameters' => $this->tubeProductionModel->getLastDiameter()
         ), true);

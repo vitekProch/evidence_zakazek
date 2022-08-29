@@ -1,40 +1,42 @@
 {block content}
 <h1 class="text-center title_margin" n:block=title>Vyrobené zakázky</h1>
-<div class="container mt-5">
+<div class="container mt-4">
 	<div class="row">
 		<div class="col">
 			<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
-			<table class="table table-bordered">
-				<thead>
-				<tr>
-					<th scope="col">Číslo zakázky</th>
-					<th scope="col">Jméno Pracovníka</th>
-					<th scope="col">Průměr Ø </th>
-					<th scope="col">Počet kusů</th>
-					<th scope="col">Datum</th>
-					<th scope="col">Směna</th>
-					{if $user->loggedIn}
-					<th scope="col">Upravit</th>
-					<th scope="col">Odstranit</th>
-					{/if}
-				</tr>
-				</thead>
-				<tbody>
-				{foreach $tube_production as $production}
-				<tr>
-					<th scope="row">{$production->order_id}</th>
-					<td>{$production->name}</td>
-					<td>{$production->diameter}</td>
-					<td>{$production->made_quantity}</td>
-					<td>{$production->create_date|date:'d-m-Y'}</td>
-					<td>{$production->shift_name}</td>
-					{if $user->loggedIn AND $production->employee_id == $user->id}
-					<td><a class="btn btn-success" n:href="edit $production->id">Upravit</a></td>
-					<td><a class="btn btn-danger" n:href="delete!, id => $production->id" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
-					{/if}
-				{/foreach}
-				</tbody>
-			</table>
+			<div class="table-wrap">
+				<table class="table table-bordered">
+					<thead>
+					<tr>
+						<th scope="col">Číslo zakázky</th>
+						<th scope="col">Jméno Pracovníka</th>
+						<th scope="col">Průměr Ø </th>
+						<th scope="col">Počet kusů</th>
+						<th scope="col">Datum</th>
+						<th scope="col">Směna</th>
+						{if $user->loggedIn}
+						<th scope="col">Upravit</th>
+						<th scope="col">Odstranit</th>
+						{/if}
+					</tr>
+					</thead>
+					<tbody>
+					{foreach $tube_production as $production}
+					<tr>
+						<th scope="row">{$production->order_id}</th>
+						<td>{$production->name}</td>
+						<td>{$production->diameter}</td>
+						<td>{$production->made_quantity}</td>
+						<td>{$production->create_date|date:'d-m-Y'}</td>
+						<td>{$production->shift_name}</td>
+						{if $user->loggedIn AND $production->employee_id == $user->id}
+						<td><a class="btn btn-success btn-sm" n:href="edit $production->id">Upravit</a></td>
+						<td><a class="btn btn-danger btn-sm" n:href="delete!, id => $production->id" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+						{/if}
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

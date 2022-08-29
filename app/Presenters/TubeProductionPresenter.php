@@ -12,7 +12,7 @@ class TubeProductionPresenter extends BasePresenter
         $productionCount = $this->tubeProductionModel->getCountAllProduction();
         $paginator = new Nette\Utils\Paginator;
         $paginator->setItemCount($productionCount); // celkový počet položek, je-li znám
-        $paginator->setItemsPerPage(11); // počet položek na stránce
+        $paginator->setItemsPerPage(10); // počet položek na stránce
         $paginator->setPage($page); // číslo aktuální stránky
 
         $tube_production = $this->tubeProductionModel->getTubeProduction($paginator->getLength(), $paginator->getOffset());
