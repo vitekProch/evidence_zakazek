@@ -6,6 +6,7 @@ services:
 	- App\Repository\EmployeeRepository
 	- App\Repository\TubeDiameterRepository
 	- App\Repository\TubeExcessRepository
+	- App\Repository\ShiftRepository
 
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory

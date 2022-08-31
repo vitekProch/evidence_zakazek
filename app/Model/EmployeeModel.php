@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Repository\EmployeeRepository;
+use App\Repository\ShiftRepository;
 
 class EmployeeModel
 {
@@ -10,15 +11,24 @@ class EmployeeModel
      * @var EmployeeRepository
      * @inject
      */
-    public $employeeRepository;
+    public EmployeeRepository $employeeRepository;
 
-    public function __construct(EmployeeRepository $employeeRepository)
+    /**
+     * @var ShiftRepository
+     * @inject
+     */
+    public ShiftRepository $shiftRepository;
+
+    public function __construct(EmployeeRepository $employeeRepository, ShiftRepository $shiftRepository)
     {
         $this->employeeRepository = $employeeRepository;
+        $this->shiftRepository = $shiftRepository;
     }
     public function insertShift($shift_id, $employee_id)
     {
-        $this->employeeRepository->insertShift($shift_id, $employee_id);
+        $shift_name = $this->shiftRepository->getActiveShift($shift_id)->fetch();
+        bdump($shift_name->shift_name);
+        $this->employeeRepository->insertShift($shift_name->shift_name, $employee_id);
     }
 
     public function getShift($employee_id)

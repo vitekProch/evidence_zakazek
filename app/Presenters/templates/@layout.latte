@@ -38,6 +38,7 @@
 				</li>
 			</ul>
 			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[name]}{/if}</div>
+			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[shift_id]}{/if}</div>
 
 			<form n:name="searchForm" class="form-inline my-lg-0">
 				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Číslo zakázky" aria-label="Search">
