@@ -4,10 +4,12 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Form;
+
 use App\Model\EmployeeModel;
 use App\Model\TubeDiameterModel;
 use App\Model\TubeExcessModel;
 use App\Model\TubeProductionModel;
+use App\Model\SignModel;
 
 class BasePresenter extends Nette\Application\UI\Presenter
 {
@@ -34,6 +36,12 @@ class BasePresenter extends Nette\Application\UI\Presenter
      * @inject
      */
     public TubeExcessModel $tubeExcessModel;
+
+    /**
+     * @var SignModel
+     * @inject
+     */
+    public SignModel $signModel;
 
 
 
