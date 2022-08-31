@@ -10,6 +10,7 @@ use App\Model\TubeDiameterModel;
 use App\Model\TubeExcessModel;
 use App\Model\TubeProductionModel;
 use App\Model\SignModel;
+use App\Model\ShiftModel;
 
 class BasePresenter extends Nette\Application\UI\Presenter
 {
@@ -43,7 +44,11 @@ class BasePresenter extends Nette\Application\UI\Presenter
      */
     public SignModel $signModel;
 
-
+    /**
+     * @var ShiftModel
+     * @inject
+     */
+    public ShiftModel $shiftModel;
 
     protected function createComponentSearchForm()
     {
@@ -58,9 +63,14 @@ class BasePresenter extends Nette\Application\UI\Presenter
     {
         $this->redirect("Search:search", [$values->search_value]);
     }
-        protected function renderLayout()
+    protected function renderLayout()
     {
-        $names = $this->user->getIdentity()->getData();
-        $this->template->layout = $names;
+        bdump('SOCKA');
+        if ($this->user->isLoggedIn())
+        {
+            $activeShift = $this->shiftModel->getShiftById($this->user->getIdentity()->getData()['shift_id']);
+            $this->template->layout = $activeShift;
+        }
+
     }
 }

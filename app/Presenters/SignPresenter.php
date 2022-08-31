@@ -56,7 +56,7 @@ class SignPresenter extends BasePresenter
             $this->redirect('Homepage:');
         }
         catch (Exceptions\DuplicateNameException $e){
-            $form->addError("Číslo zaměstnance již existuje");
+            $this->flashMessage("Číslo zaměstnance již existuje", 'error');
         }
     }
 
