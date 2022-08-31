@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41888753-83c9-44b6-ae63-221359a92c5b" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/Model/ShiftModel.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Repository/ShiftRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Presenters/BasePresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/BasePresenter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Presenters/SignPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/SignPresenter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.neon" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.neon" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d1ed8b75-04c2-4d29-901c-594fbd777b89.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d1ed8b75-04c2-4d29-901c-594fbd777b89.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/SignPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/SignPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" afterDir="false" />
+>>>>>>> funkcni_shift
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +28,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -79,7 +93,12 @@
       <workItem from="1661849612969" duration="3315000" />
       <workItem from="1661856643425" duration="1719000" />
       <workItem from="1661892774533" duration="41000" />
+<<<<<<< HEAD
       <workItem from="1661930915503" duration="4432000" />
+=======
+      <workItem from="1661930915503" duration="1982000" />
+      <workItem from="1661978087764" duration="5149000" />
+>>>>>>> funkcni_shift
     </task>
     <servers />
   </component>
