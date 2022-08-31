@@ -9,13 +9,13 @@
 </head>
 
 <body>
-<div class="container">
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarExampleDefault">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
@@ -27,7 +27,7 @@
 					<a class="nav-link" n:href="CreateExcess:createExcess">Zakázka navíc</a>
 				</li>
 				<li class="nav-item">
-					<a n:if="$user->isAllowed('register', 'view')" n:href="Sign:up" class="nav-link">Registrovat</a>
+					<a class="nav-link" n:if="$user->isAllowed('register', 'view')" n:href="Sign:up">Registrovat</a>
 				</li>
 				<li class="nav-item">
 					{if $user->loggedIn}
@@ -37,34 +37,40 @@
 					{/if}
 				</li>
 			</ul>
-			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[name]}{/if}</div>
-			<div class="navbar-text mr-5" {if $user->loggedIn}">{$user->getIdentity()->getData()[shift_id]}{/if}</div>
 
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item mr-3">
+					{if $user->loggedIn}
+						<div class="navbar-text mr-4"> {$user->getIdentity()->getData()[name]}</div>
+					{/if}
+				</li>
+				<li class="nav-item mr-5">
+					{if $user->loggedIn}
+						<div class="navbar-text"> {$user->getIdentity()->getData()[shift_id]} </div>
+					{/if}
+				</li>
+			</ul>
 			<form n:name="searchForm" class="form-inline my-lg-0">
 				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Číslo zakázky" aria-label="Search">
 				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send" value="Vyhledat">
 			</form>
 		</div>
-	</nav>
-</div>
-
-
-
-
+	</div>
+</nav>
 
 
 <div class="container">
 {include content}
 </div>
-		{block scripts}
-			<script src="{$basePath}/js/bootstrap/bootstrap.bundle.min.js"></script>
-			<script src="{$basePath}/js/Ajax/jquery.min.js"></script>
-			<script src="{$basePath}/js/nette.ajax.js-master/nette.ajax.js"></script>
-			<script src="{$basePath}/js/Main/main.js"></script>
-			<script src="{$basePath}/js/HomeForm/form.js"></script>
-			<script src="{$basePath}/js/Excess/updateExcess.js"></script>
-			<script src="{$basePath}/js/Excess/showExcess.js"></script>
-			<script src="{$basePath}/js/NetteForms/netteForms.min.js"></script>
-		{/block}
+	{block scripts}
+		<script src="{$basePath}/js/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="{$basePath}/js/Ajax/jquery.min.js"></script>
+		<script src="{$basePath}/js/nette.ajax.js-master/nette.ajax.js"></script>
+		<script src="{$basePath}/js/Main/main.js"></script>
+		<script src="{$basePath}/js/HomeForm/form.js"></script>
+		<script src="{$basePath}/js/Excess/updateExcess.js"></script>
+		<script src="{$basePath}/js/Excess/showExcess.js"></script>
+		<script src="{$basePath}/js/NetteForms/netteForms.min.js"></script>
+	{/block}
 </body>
 </html>

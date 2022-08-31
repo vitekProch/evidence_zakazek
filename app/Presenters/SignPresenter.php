@@ -90,8 +90,8 @@ class SignPresenter extends BasePresenter
     {
         try {
             $this->user->setExpiration('9 hour');
-            $this->getUser()->login($values->username, $values->password);
             $this->employeeModel->insertShift($values->shift, $values->username);
+            $this->getUser()->login($values->username, $values->password);
             $this->flashMessage('Přihlášení bylo úspěšné.','success');
             $this->redirect('Homepage:');
 
