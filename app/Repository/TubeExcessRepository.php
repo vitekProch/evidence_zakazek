@@ -7,50 +7,63 @@ use Nette\Database\Row;
 
 class TubeExcessRepository extends BaseRepository
 {
+    CONST TABLE_NAME = 'tube_excess';
+
+    public function getExcessById($material_id)
+    {
+        return $this->database->query('SELECT * FROM tube_excess WHERE material_id = ?', $material_id)->fetch();
+    }
     public function getExcess(): ResultSet
     {
-        return $this->database->query('SELECT order_id,quantity,diameter FROM `tube_excess` INNER JOIN tube_diameter ON tube_excess.diameter_id = tube_diameter.diameter_id ORDER BY tube_diameter.diameter_id');
+        return $this->database->query('SELECT material_id,quantity,diameter FROM `tube_excess` INNER JOIN tube_diameter ON tube_excess.diameter_id = tube_diameter.diameter_id ORDER BY tube_diameter.diameter_id');
     }
 
-    public function findExcess($order_id): ?Row
+    public function findExcess($material_id): ?Row
     {
-        return $this->database->query('SELECT order_id, quantity, diameter FROM tube_excess INNER JOIN tube_diameter ON tube_excess.diameter_id = tube_diameter.diameter_id WHERE order_id = ?', $order_id)->fetch();
+        return $this->database->query('SELECT material_id, quantity, diameter FROM tube_excess INNER JOIN tube_diameter ON tube_excess.diameter_id = tube_diameter.diameter_id WHERE material_id = ?', $material_id)->fetch();
     }
-    public function insertExcess($order_id, $quantity, $diameter_excess)
+    public function insertExcess($material_id, $quantity, $diameter_excess)
     {
-        $this->database->table('tube_excess')->insert([
-            'order_id' => $order_id,
+        $this->database->table(self::TABLE_NAME)->insert([
+            'material_id' => $material_id,
             'quantity' => $quantity,
             'diameter_id' => $diameter_excess,
         ]);
     }
 
-    public function updateExcess($order_id, $quantity, $diameters)
+    public function updateExcess($material_id, $quantity, $diameters)
     {
         $this->database->query('
             update tube_excess
             set quantity = quantity + ?, diameter_id = ?
-            WHERE order_id = ?', $quantity, $diameters, $order_id);
+            WHERE material_id = ?', $quantity, $diameters, $material_id);
     }
     public function deleteExcess($excess_id)
     {
-        $this->database->query('DELETE FROM tube_excess WHERE order_id = ?',$excess_id);
+        $this->database->query('DELETE FROM tube_excess WHERE material_id = ?',$excess_id);
     }
 
-    public function newExcessQuantity($order_id, $quantity)
+    public function newExcessQuantity($material_id, $quantity)
     {
         $this->database->query('
             update tube_excess
             set quantity = ?
-            WHERE order_id = ?', $quantity, $order_id);
+            WHERE material_id = ?', $quantity, $material_id);
+    }
+    public function newExcess($id, $material_id, $quantity, $diameter)
+    {
+        $this->database->query('
+            update tube_excess
+            set material_id = ?, quantity = ?, diameter_id = ?
+            WHERE id = ?', $material_id, $quantity, $diameter, $id);
     }
 
-    public function checkExcess($order_id): ?Row
+    public function checkExcess($material_id): ?Row
     {
-        return $this->database->query('SELECT order_id FROM tube_excess WHERE order_id = ?', $order_id)->fetch();
+        return $this->database->query('SELECT material_id FROM tube_excess WHERE material_id = ?', $material_id)->fetch();
     }
-    public function getExcessByOrderId()
+    public function getExcessByOrderId(): \Nette\Database\Table\Selection
     {
-        return $this->database->table('tube_excess');
+        return $this->database->table(self::TABLE_NAME);
     }
 }

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        $("#frm-orderTubeForm-order_id").keyup(function()
+        $("#frm-orderTubeForm-material_id").keyup(function()
         {
             var input = $(this).val();
             if (input !== "") {
@@ -18,7 +18,7 @@ $(document).ready(function(){
 
  });
 
-$('#frm-orderTubeForm-order_id').on('keyup keypress', function(e) {
+$('#frm-orderTubeForm-material_id, #frm-orderTubeForm-order_id').on('keyup keypress', function(e) {
     var keyCode = e.keyCode || e.which;
     if (keyCode === 13) {
         e.preventDefault();

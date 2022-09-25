@@ -7,7 +7,6 @@ class ExcessPresenter extends HomepagePresenter
     public function beforeRender()
     {
         parent::beforeRender();
-
         $this->searchExcess();
         $this->updateExcess();
         $this->deleteExcess();

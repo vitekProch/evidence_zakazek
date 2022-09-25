@@ -9,6 +9,9 @@ class TubeProductionPresenter extends BasePresenter
 
     public function renderProduction(int $page = 1)
     {
+        $paginator = new Nette\Utils\Paginator;
+        $this->template->maxPage = $paginator->getPageCount();
+        $this->template->page = $paginator->getPage();
         $productionCount = $this->tubeProductionModel->getCountAllProduction();
         $paginator = new Nette\Utils\Paginator;
         $paginator->setItemCount($productionCount); // celkový počet položek, je-li znám
@@ -23,13 +26,13 @@ class TubeProductionPresenter extends BasePresenter
     public function renderEdit(int $id): void
     {
         $tube_production = $this->tubeProductionModel->getTubeProduction(1,0);
-        $order_id = $this->tubeProductionModel->getOrderById()->get($id);
-        $employee_name = $this->employeeModel->getEmployeeName($order_id->employee_id);
-        $employee_id = $order_id->toArray()["employee_id"];
+        $material_id = $this->tubeProductionModel->getOrderById()->get($id);
+        $employee_name = $this->employeeModel->getEmployeeName($material_id->employee_id);
+        $employee_id = $material_id->toArray()["employee_id"];
 
         $this->template->employee_id = $employee_id;
         $this->template->tube_production = $tube_production;
-        $this->template->order_id = $order_id;
+        $this->template->material_id = $material_id;
         $this->template->employee_name = $employee_name;
     }
     public function actionEdit(int $id): void
@@ -55,13 +58,13 @@ class TubeProductionPresenter extends BasePresenter
     protected function createComponentEditForm(): Form
     {
         $form = new Form;
-        $form->addText('order_id', 'číslo zakázky')
+        $form->addText('material_id', 'číslo zakázky')
             ->addRule($form::LENGTH, 'Číslo zakázky může být krátné minimálně 6 číslic',[6,7])
             ->addRule($form::NUMERIC, 'Číslo zakázky se musí skládat pouze z číslic')
             ->setRequired('Vyplňte prosím %label');
         $form->addHidden('id');
         $diameter = $this->tubeDiameterModel->getDiameters();
-        $form->addSelect('tube_diameter', 'Průměr: ', $diameter);
+        $form->addSelect('diameter_id', 'Průměr: ', $diameter);
 
         $form->addText('made_quantity', 'počet kusů')
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
@@ -85,12 +88,29 @@ class TubeProductionPresenter extends BasePresenter
     {
        $this->tubeProductionModel->updateNewData(
            $values['id'],
-           $values['order_id'],
-           $values['tube_diameter'],
+           $values['material_id'],
+           $values['diameter_id'],
            $values['made_quantity'],
            $values['shift_id']);
 
         $this->flashMessage('Zakázka byla upravena.', 'success');
-        $this->redirect('TubeProduction:production');
+        $this->redirect('TubeExcess:tubeExcess');
+    }
+    public function handleShow(int $id, array $pproduct)
+    {
+
+        $this->template->id = $id;
+        $this->template->productt = $pproduct;
+        if ($this->isAjax()) {
+            $this->payload->isModal = TRUE;
+            $this->redrawControl("modal");
+
+        }
+    }
+    public function handleLoadProducts($page){
+        if($this->isAjax()){
+            $this->redrawControl('pagination');
+            $this->redrawControl('filterListing');
+        }
     }
 }

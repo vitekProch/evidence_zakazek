@@ -6,7 +6,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Zakázka navíc!</th>
+                    <th scope="col">Materiál navíc!</th>
                     <th scope="col">Počet navíc</th>
                     <th scope="col">Průměr Ø</th>
                     <th scope="col">Upravit</th>
@@ -15,11 +15,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="font-size">{$data['order_id']}</td>
+                    <td class="font-size">{$data['material_id']}</td>
                     <td class="font-size">{$data['quantity']}</td>
                     <td class="font-size">{$data['diameter']}</td>
                     <td><button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#reg-modal">Upravit</button></td>
-                    <td><button class="btn btn-outline-dark btn-sm" data-id="{$data['order_id']}" onclick="deleteExcess({$data['order_id']})">Odstranit</button></td>
+                    <td><button class="btn btn-outline-dark btn-sm" data-id="{$data['material_id']}" onclick="deleteExcess({$data['material_id']})">Odstranit</button></td>
                 </tr>
                 </tbody>
             </table>
@@ -33,19 +33,19 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal-title">Upravte počet</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-bs-dismiss="modal" data-bs-target="#reg-modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th scope="col">Číslo zakázky</th>
+                            <th scope="col">Číslo materiálu</th>
                             <th scope="col">Počet navíc</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input aria-disabled="false" readonly class="font-size text-center smaller border-0" id="orderId" value="{$data['order_id']}"></td>
+                            <td><input aria-disabled="false" readonly class="font-size text-center smaller border-0" id="orderId" value="{$data['material_id']}"></td>
                             <td><input class="font-size text-center smaller" placeholder="{$data['quantity']}" id="quantity"></td>
                         </tr>
                         </tbody>

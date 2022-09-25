@@ -20,11 +20,11 @@
                     <tbody>
                     <tr class="table-active">
                         <form n:name=editForm>
-                            <th><input class="text-center smaller" n:name=order_id></th>
+                            <th><input class="text-center smaller" n:name=material_id></th>
                             <td>{$employee_name}</td>
-                            <td><select class="text-center" n:name=tube_diameter></select></td>
+                            <td><select class="text-center" n:name=diameter_id></select></td>
                             <td><input class="text-center smaller" n:name= made_quantity></td>
-                            <td class="">{$order_id->create_date|date:'d-m-Y'}</td>
+                            <td class="">{$material_id->create_date|date:'d-m-Y'}</td>
                             <td><select class="text-center" n:name=shift_id></select></td>
                             <td><input class="btn btn-success" n:name=save></td>
                             <td><a n:href="TubeProduction:production" class="btn btn-danger">Zrušit</a></td>

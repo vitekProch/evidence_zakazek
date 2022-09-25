@@ -6,7 +6,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Číslo zakázky</th>
+                    <th scope="col">Číslo materiálu</th>
                     <th scope="col">Jméno Pracovníka</th>
                     <th scope="col">Průměr Ø </th>
                     <th scope="col">Počet kusů</th>
@@ -17,7 +17,7 @@
                 <tbody>
                 {foreach $tube_production as $production}
                 <tr>
-                    <th scope="row">{$production->order_id}</th>
+                    <th scope="row">{$production->material_id}</th>
                     <td>{$production->name}</td>
                     <td>{$production->diameter}</td>
                     <td>{$production->made_quantity}</td>

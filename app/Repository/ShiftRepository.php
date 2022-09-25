@@ -8,4 +8,8 @@ class ShiftRepository extends BaseRepository
     {
         return $this->database->query('SELECT shift_name FROM shift WHERE shift_id = ?', $shift_id);
     }
+    public function getShiftByName($shift_name)
+    {
+      return $this->database->query('SELECT shift_id FROM shift WHERE shift_name = ?', $shift_name)->fetch();
+    }
 }

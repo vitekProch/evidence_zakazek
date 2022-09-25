@@ -20,7 +20,8 @@
 		"nette/utils": "^3.2",
 		"latte/latte": "^2.9",
 		"tracy/tracy": "^2.8",
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+      "ext-mysql_xdevapi": "*"
     },
 	"require-dev": {
 		"nette/tester": "^2.3",

@@ -48,8 +48,13 @@ class TubeExcessModel
     {
         $this->tubeExcessRepository->deleteExcess($excessId);
     }
-    public function getExcessByOrderId()
+    public function newExcess($id, $material_id, $quantity, $diameter)
     {
-        return $this->tubeExcessRepository->getExcessByOrderId();
+        $this->tubeExcessRepository->newExcess($id, $material_id, $quantity, $diameter);
     }
+    public function getExcessById($material_id)
+    {
+        return $this->tubeExcessRepository->getExcessById($material_id);
+    }
+
 }

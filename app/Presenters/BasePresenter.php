@@ -63,14 +63,4 @@ class BasePresenter extends Nette\Application\UI\Presenter
     {
         $this->redirect("Search:search", [$values->search_value]);
     }
-    protected function renderLayout()
-    {
-        bdump('SOCKA');
-        if ($this->user->isLoggedIn())
-        {
-            $activeShift = $this->shiftModel->getShiftById($this->user->getIdentity()->getData()['shift_id']);
-            $this->template->layout = $activeShift;
-        }
-
-    }
 }
