@@ -9,18 +9,19 @@ class TubeProductionPresenter extends BasePresenter
 
     public function renderProduction(int $page = 1)
     {
+
         $paginator = new Nette\Utils\Paginator;
         $this->template->maxPage = $paginator->getPageCount();
         $this->template->page = $paginator->getPage();
         $productionCount = $this->tubeProductionModel->getCountAllProduction();
         $paginator = new Nette\Utils\Paginator;
         $paginator->setItemCount($productionCount); // celkový počet položek, je-li znám
-        $paginator->setItemsPerPage(10); // počet položek na stránce
+        $paginator->setItemsPerPage(7); // počet položek na stránce
         $paginator->setPage($page); // číslo aktuální stránky
-
-        $tube_production = $this->tubeProductionModel->getTubeProduction($paginator->getLength(), $paginator->getOffset());
+        $tube_production = $this->tubeProductionModel->getNoDupTubeProduction($paginator->getLength(), $paginator->getOffset());
         $this->template->tube_production = $tube_production;
         $this->template->paginator = $paginator;
+
 
     }
     public function renderEdit(int $id): void

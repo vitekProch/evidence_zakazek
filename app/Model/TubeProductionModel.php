@@ -131,4 +131,9 @@ class TubeProductionModel
     {
         $this->tubeProductionRepository->deleteRecord($id);
     }
+
+    public function getNoDupTubeProduction($limit, $offset)
+    {
+        return $this->tubeProductionRepository->getNoDupTubeProduction($limit, $offset);
+    }
 }
