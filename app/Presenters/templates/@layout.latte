@@ -50,12 +50,43 @@
 				</li>
 			</ul>
 			<form n:name="searchForm" class="form-inline my-lg-0">
+				<select class="form-control mr-1" n:name="search_select">SELECT</select>
 				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Číslo zakázky" aria-label="Search">
 				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send" value="Vyhledat">
 			</form>
 		</div>
 	</div>
 </nav>
+
+{snippet modal}
+	{if $presenter->isAjax()}
+		{ifset #modal}
+			<div class="modal fade modal-ajax" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-keyboard="false">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							{block modalHeader}
+							<h3 class="modal-title float-left">
+								{block|striptags}{include #modalTitle}{/block}
+							</h3>
+							{/block}
+						</div>
+						<div class="modal-body">
+							{include #modal}
+						</div>
+						{ifset #modalFooter}
+							<div class="modal-footer">
+								{include #modalFooter}
+							</div>
+						{/ifset}
+					</div>
+				</div>
+			</div>
+		{/ifset}
+	{/if}
+{/snippet}
+
 <div class="container">
 {include content}
 </div>

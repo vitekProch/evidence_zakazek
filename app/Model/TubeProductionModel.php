@@ -108,6 +108,11 @@ class TubeProductionModel
         $this->tubeProductionRepository->insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id);
     }
 
+    public function searchOrderByMaterialId($order_id): ResultSet
+    {
+        return $this->tubeProductionRepository->searchOrderByMaterialId($order_id);
+    }
+
     public function searchOrderByOrderId($order_id): ResultSet
     {
         return $this->tubeProductionRepository->searchOrderByOrderId($order_id);
@@ -134,6 +139,61 @@ class TubeProductionModel
 
     public function getNoDupTubeProduction($limit, $offset)
     {
-        return $this->tubeProductionRepository->getNoDupTubeProduction($limit, $offset);
+        $orders = $this->tubeProductionRepository->getNoDupTubeProduction();
+
+        $current_material = 0;
+        $new_values = [];
+        $same_material = [];
+        $displayed_order = [];
+        $index_new = 0;
+        $index_material = 0;
+
+        foreach ($orders as $order)
+        {
+
+            if ($order->material_id != $current_material){
+                $new_values[$index_new]['order_id'] = $order->order_id;
+                $new_values[$index_new]['id'] = $order->id;
+                $new_values[$index_new]['material_id'] = $order->material_id;
+                $new_values[$index_new]['name'] = $order->name;
+                $new_values[$index_new]['employee_id'] = $order->employee_id;
+                $new_values[$index_new]['diameter'] = $order->diameter;
+                $new_values[$index_new]['made_quantity'] = $order->made_quantity;
+                $new_values[$index_new]['date_created'] = $order->date_created;
+                $new_values[$index_new]['shift_name'] = $order->shift_name;
+                $index_new += 1;
+
+            }
+            else{
+
+                $same_material[$index_new][$index_material]['order_id'] = $order->order_id;
+                $same_material[$index_new][$index_material]['id'] = $order->id;
+                $same_material[$index_new][$index_material]['material_id'] = $order->material_id;
+                $same_material[$index_new][$index_material]['name'] = $order->name;
+                $same_material[$index_new][$index_material]['employee_id'] = $order->employee_id;
+                $same_material[$index_new][$index_material]['diameter'] = $order->diameter;
+                $same_material[$index_new][$index_material]['made_quantity'] = $order->made_quantity;
+                $same_material[$index_new][$index_material]['date_created'] = $order->date_created;
+                $same_material[$index_new][$index_material]['shift_name'] = $order->shift_name;
+                $index_material += 1;
+            }
+            $current_material = $order->material_id;
+        }
+
+        //   PAGINATION   //
+
+        foreach (range(($offset), $offset + $limit - 1) as $i){
+            $displayed_order[$i]['order_id'] = $new_values[$i]['order_id'];
+            $displayed_order[$i]['id'] = $new_values[$i]['id'];
+            $displayed_order[$i]['material_id'] = $new_values[$i]['material_id'];
+            $displayed_order[$i]['name'] = $new_values[$i]['name'];
+            $displayed_order[$i]['employee_id'] = $new_values[$i]['employee_id'];
+            $displayed_order[$i]['diameter'] = $new_values[$i]['diameter'];
+            $displayed_order[$i]['made_quantity'] = $new_values[$i]['made_quantity'];
+            $displayed_order[$i]['date_created'] = $new_values[$i]['date_created'];
+            $displayed_order[$i]['shift_name'] = $new_values[$i]['shift_name'];
+        }
+
+        return array($displayed_order, $same_material);
     }
 }

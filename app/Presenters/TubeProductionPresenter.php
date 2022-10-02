@@ -9,20 +9,15 @@ class TubeProductionPresenter extends BasePresenter
 
     public function renderProduction(int $page = 1)
     {
-
-        $paginator = new Nette\Utils\Paginator;
-        $this->template->maxPage = $paginator->getPageCount();
-        $this->template->page = $paginator->getPage();
         $productionCount = $this->tubeProductionModel->getCountAllProduction();
         $paginator = new Nette\Utils\Paginator;
         $paginator->setItemCount($productionCount); // celkový počet položek, je-li znám
         $paginator->setItemsPerPage(7); // počet položek na stránce
         $paginator->setPage($page); // číslo aktuální stránky
         $tube_production = $this->tubeProductionModel->getNoDupTubeProduction($paginator->getLength(), $paginator->getOffset());
+
         $this->template->tube_production = $tube_production;
         $this->template->paginator = $paginator;
-
-
     }
     public function renderEdit(int $id): void
     {
@@ -97,20 +92,13 @@ class TubeProductionPresenter extends BasePresenter
         $this->flashMessage('Zakázka byla upravena.', 'success');
         $this->redirect('TubeExcess:tubeExcess');
     }
-    public function handleShow(int $id_poradi, array $pproduct)
+    public function handleShow(array $modal_data)
     {
-        $this->template->id = $id_poradi;
-        $this->template->productt = $pproduct;
+        $this->template->modal_data = $modal_data;
         if ($this->isAjax()) {
             $this->payload->isModal = TRUE;
             $this->redrawControl("modal");
 
-        }
-    }
-    public function handleLoadProducts($page){
-        if($this->isAjax()){
-            $this->redrawControl('pagination');
-            $this->redrawControl('filterListing');
         }
     }
 }

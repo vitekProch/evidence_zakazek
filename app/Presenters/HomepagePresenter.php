@@ -24,8 +24,7 @@ class HomepagePresenter extends BasePresenter
     public function renderDefault($data)
     {
         $tube_diameters = $this->tubeDiameterModel->getDiameters();
-
-        $tube_production = $this->tubeProductionModel->getTubeProduction(5,0);
+        $tube_production = $this->tubeProductionModel->getNoDupTubeProduction(5, 0);
         $this['orderTubeForm']->setValues(array(
             'diameters' => $this->tubeProductionModel->getLastDiameter()
         ), true);
@@ -77,11 +76,9 @@ class HomepagePresenter extends BasePresenter
             $this->flashMessage("Číslo zakázky již existuje", 'error');
         }
     }
-    public function handleShow(int $id, array $pproduct)
+    public function handleShow(array $modal_data)
     {
-
-        $this->template->id = $id;
-        $this->template->productt = $pproduct;
+        $this->template->modal_data = $modal_data;
         if ($this->isAjax()) {
             $this->payload->isModal = TRUE;
             $this->redrawControl("modal");

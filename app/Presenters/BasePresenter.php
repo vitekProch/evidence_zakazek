@@ -55,12 +55,18 @@ class BasePresenter extends Nette\Application\UI\Presenter
         $form = new Form;
         $form->addText('search_value', 'Hledat:')
             ->setRequired(TRUE);
+
+        $options =  [
+            "0" => "Číslo zakázky",
+            "1" => "Číslo materiálu",
+        ];
+        $form->addSelect('search_select', 'Search', $options);
         $form->addSubmit('send', 'Search');
         $form->onSuccess[] = [$this, 'searchFormSucceeded'];
         return $form;
     }
     public function searchFormSucceeded(Form $form, $values): void
     {
-        $this->redirect("Search:search", [$values->search_value]);
+        $this->redirect("Search:search", [$values->search_value], $values->search_select);
     }
 }

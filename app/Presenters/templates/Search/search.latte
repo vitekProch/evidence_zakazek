@@ -12,6 +12,7 @@
                     <th scope="col">Počet kusů</th>
                     <th scope="col">Datum</th>
                     <th scope="col">Směna</th>
+                    <th scope="col">Číslo zakázky</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,7 +24,9 @@
                     <td>{$production->made_quantity}</td>
                     <td>{$production->create_date|date:'d-m-Y'}</td>
                     <td>{$production->shift_name}</td>
+                    <td>{$production->order_id}</td>
                     {/foreach}
+                </tr>
                 </tbody>
             </table>
         </div>
