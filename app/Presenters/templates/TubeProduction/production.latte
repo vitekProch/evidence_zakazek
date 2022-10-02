@@ -1,4 +1,33 @@
 {block content}
+{snippet modal}
+	{if $presenter->isAjax()}
+		{ifset #modal}
+			<div class="modal fade modal-ajax" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-keyboard="false">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							{block modalHeader}
+							<h3 class="modal-title float-left">
+								{block|striptags}{include #modalTitle}{/block}
+							</h3>
+							{/block}
+						</div>
+						<div class="modal-body">
+							{include #modal}
+						</div>
+						{ifset #modalFooter}
+							<div class="modal-footer">
+								{include #modalFooter}
+							</div>
+						{/ifset}
+					</div>
+				</div>
+		</div>
+		{/ifset}
+	{/if}
+{/snippet}
+
 <h1 class="text-center title_margin" n:block=title>Vyrobené zakázky</h1>
     <div class="container mt-4">
         <div class="row">
@@ -16,17 +45,67 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {foreach $tube_production as $id => $production}
-                            {do $id += 1}
+
+                        {foreach $tube_production[0] as $id_poradi => $production}
+                            {do $id_poradi += 1}
                             <tr>
                                 <th scope="row">{$production['material_id']}</th>
                                 <td>{$production['name']}</td>
                                 <td>{$production['diameter']}</td>
-                                <td>{$production['made_quantity']}</td>
+                                {if isset($tube_production[1][$id_poradi])}
+                                    {do $sum_quantity = 0}
+                                    {foreach $tube_production[1][$id_poradi] as $asd}
+
+                                        {do $sum_quantity += $asd['made_quantity']}
+                                    {/foreach}
+                                    {do $sum_quantity += $production['made_quantity']}
+                                    <td>{$sum_quantity}</td>
+                                {else}
+                                    <td>{$production['made_quantity']}</td>
+                                {/if}
                                 <td>{$production['date_created']}</td>
                                 <td>{$production['shift_name']}</td>
-                                <td>{$production['order_id']}</td>
-                                <td>{$id}</td>
+                                {if isset($tube_production[1][$id_poradi])}
+                                {do array_push($tube_production[1][$id_poradi], $production)}
+                                    <td><a n:href="show!, $id_poradi, $tube_production[1][$id_poradi]" class="ajax btn btn-outline-info" title="editovat"><i class="fa fa-balance-scale fa-lg"></i>Více</a></td>
+                                    {define modalTitle}Jednotlivé zakázky{/define}
+                                    {define modal}
+                                        <table class="table table-bordered table-responsive-lg">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Číslo materiálu</th>
+                                                <th scope="col">Jméno Pracovníka</th>
+                                                <th scope="col">Průměr Ø</th>
+                                                <th scope="col">Počet kusů</th>
+                                                <th scope="col">Datum</th>
+                                                <th scope="col">Směna</th>
+                                                <th scope="col">Číslo zakázky</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {foreach $productt as $prod}
+
+                                                <tr>
+                                                    <th scope="row">{$prod['material_id']}</th>
+                                                    <td>{$prod['name']}</td>
+                                                    <td>{$prod['diameter']}</td>
+                                                    <td>{$prod['made_quantity']}</td>
+                                                    <td>{$prod['date_created']}</td>
+                                                    <td>{$prod['shift_name']}</td>
+                                                    <td>{$prod['order_id']}</td>
+                                                </tr>
+
+                                            {/foreach}
+                                            </tbody>
+                                        </table>
+                                    {/define}
+
+                                    {define modalFooter}
+                                        <button type="button" class="btn btn-secondary mt-2" n:href="Homepage:" data-bs-dismiss="modal">Zavřít</button>
+                                    {/define}
+                                {else}
+                                    <td>{$production['order_id']}</td>
+                                {/if}
                             </tr>
                         {/foreach}
                     </tbody>

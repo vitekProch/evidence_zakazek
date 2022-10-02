@@ -97,10 +97,9 @@ class TubeProductionPresenter extends BasePresenter
         $this->flashMessage('Zakázka byla upravena.', 'success');
         $this->redirect('TubeExcess:tubeExcess');
     }
-    public function handleShow(int $id, array $pproduct)
+    public function handleShow(int $id_poradi, array $pproduct)
     {
-
-        $this->template->id = $id;
+        $this->template->id = $id_poradi;
         $this->template->productt = $pproduct;
         if ($this->isAjax()) {
             $this->payload->isModal = TRUE;

@@ -104,38 +104,41 @@ class TubeProductionRepository extends BaseRepository
         $new_values = [];
         $same_values = [];
         $result = [];
-        $index = 0;
+        $index_new = 0;
+        $index_same = 0;
+        $x = 0;
         foreach ($values as $i => $value)
         {
 
             if ($value->material_id != $current_material){
-                $new_values[$index]['order_id'] = $value->order_id;
-                $new_values[$index]['id'] = $value->id;
-                $new_values[$index]['material_id'] = $value->material_id;
-                $new_values[$index]['name'] = $value->name;
-                $new_values[$index]['employee_id'] = $value->employee_id;
-                $new_values[$index]['diameter'] = $value->diameter;
-                $new_values[$index]['made_quantity'] = $value->made_quantity;
-                $new_values[$index]['date_created'] = $value->date_created;
-                $new_values[$index]['shift_name'] = $value->shift_name;
-                $index += 1;
+                $new_values[$index_new]['order_id'] = $value->order_id;
+                $new_values[$index_new]['id'] = $value->id;
+                $new_values[$index_new]['material_id'] = $value->material_id;
+                $new_values[$index_new]['name'] = $value->name;
+                $new_values[$index_new]['employee_id'] = $value->employee_id;
+                $new_values[$index_new]['diameter'] = $value->diameter;
+                $new_values[$index_new]['made_quantity'] = $value->made_quantity;
+                $new_values[$index_new]['date_created'] = $value->date_created;
+                $new_values[$index_new]['shift_name'] = $value->shift_name;
+                $index_new += 1;
 
             }
             else{
-                $same_values[$i]['same'] = $index;
-                $same_values[$i]['order_id'] = $value->order_id;
-                $same_values[$i]['id'] = $value->id;
-                $same_values[$i]['material_id'] = $value->material_id;
-                $same_values[$i]['name'] = $value->name;
-                $same_values[$i]['employee_id'] = $value->employee_id;
-                $same_values[$i]['diameter'] = $value->diameter;
-                $same_values[$i]['made_quantity'] = $value->made_quantity;
-                $same_values[$i]['date_created'] = $value->date_created;
-                $same_values[$i]['shift_name'] = $value->shift_name;
+
+                $same_values[$index_new][$x]['order_id'] = $value->order_id;
+                $same_values[$index_new][$x]['id'] = $value->id;
+                $same_values[$index_new][$x]['material_id'] = $value->material_id;
+                $same_values[$index_new][$x]['name'] = $value->name;
+                $same_values[$index_new][$x]['employee_id'] = $value->employee_id;
+                $same_values[$index_new][$x]['diameter'] = $value->diameter;
+                $same_values[$index_new][$x]['made_quantity'] = $value->made_quantity;
+                $same_values[$index_new][$x]['date_created'] = $value->date_created;
+                $same_values[$index_new][$x]['shift_name'] = $value->shift_name;
+                $index_same += 1;
+                $x += 1;
             }
             $current_material = $value->material_id;
         }
-        bdump($same_values);
         foreach (range(($offset), $offset + $limit - 1) as $i){
             $result[$i]['order_id'] = $new_values[$i]['order_id'];
             $result[$i]['id'] = $new_values[$i]['id'];
@@ -148,8 +151,7 @@ class TubeProductionRepository extends BaseRepository
             $result[$i]['shift_name'] = $new_values[$i]['shift_name'];
         }
 
-
-        return $result;
+        return array($result, $same_values);
     }
 
 }
