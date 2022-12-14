@@ -7,12 +7,13 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th class="smaller" scope="col">Číslo zakázky</th>
+                        <th class="smaller" scope="col">Číslo materialu</th>
                         <th scope="col">Jméno Pracovníka</th>
                         <th scope="col">Průměr Ø </th>
                         <th scope="col">Počet kusů</th>
                         <th scope="col">Datum</th>
                         <th scope="col">Směna</th>
+                        <th scope="col">Číslo zakázky</th>
                         <th scope="col">Upravit</th>
                         <th scope="col">Zrušit</th>
                     </tr>
@@ -23,9 +24,10 @@
                             <th><input class="text-center smaller" n:name=material_id></th>
                             <td>{$employee_name}</td>
                             <td><select class="text-center" n:name=diameter_id></select></td>
-                            <td><input class="text-center smaller" n:name= made_quantity></td>
+                            <td><input class="text-center smaller" n:name=made_quantity></td>
                             <td class="">{$material_id->create_date|date:'d-m-Y'}</td>
                             <td><select class="text-center" n:name=shift_id></select></td>
+                            <td><input class="text-center smaller" n:name=order_id></td>
                             <td><input class="btn btn-success" n:name=save></td>
                             <td><a n:href="TubeProduction:production" class="btn btn-danger">Zrušit</a></td>
                         </form>

@@ -5,7 +5,7 @@ $(function () {
 $(function() {
     setTimeout(function(){
         $('.alert').slideUp(500);
-    }, 3000);
+    }, 5000);
 });
 $.nette.ext("modals", {
     success: function(payload) {
@@ -15,22 +15,4 @@ $.nette.ext("modals", {
             $('.modal-ajax').modal('show');
         }
     }
-});
-
-$.nette.ext("ajaxRedirect", {
-    success: function (payload) {
-        if (payload.redirect) {
-            $.nette.ajax(payload.redirect);
-        }
-    }
-});
-$(function () {
-    $.nette.ext('changeurl',{
-        success: function (payload) {
-            if (payload.changeurl) {
-                window.history.pushState(null, null, payload.changeurl);
-            }
-
-        }
-    });
 });

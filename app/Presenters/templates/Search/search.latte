@@ -3,32 +3,7 @@
     <div class="row">
         <div class="col">
             <h1 class="text-center mb-5">Vyhledané zakázky</h1>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Číslo materiálu</th>
-                    <th scope="col">Jméno Pracovníka</th>
-                    <th scope="col">Průměr Ø </th>
-                    <th scope="col">Počet kusů</th>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Směna</th>
-                    <th scope="col">Číslo zakázky</th>
-                </tr>
-                </thead>
-                <tbody>
-                {foreach $tube_production as $production}
-                <tr>
-                    <th scope="row">{$production->material_id}</th>
-                    <td>{$production->name}</td>
-                    <td>{$production->diameter}</td>
-                    <td>{$production->made_quantity}</td>
-                    <td>{$production->create_date|date:'d-m-Y'}</td>
-                    <td>{$production->shift_name}</td>
-                    <td>{$production->order_id}</td>
-                    {/foreach}
-                </tr>
-                </tbody>
-            </table>
+            {include "../layout-table.latte", table_values: $tube_production}
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        $("#frm-orderTubeForm-material_id").keyup(function()
+        $("#frm-orderForm-material_id").keyup(function()
         {
             var input = $(this).val();
             if (input !== "") {
@@ -17,11 +17,17 @@ $(document).ready(function(){
         });
 
  });
-
-$('#frm-orderTubeForm-material_id, #frm-orderTubeForm-order_id').on('keyup keypress', function(e) {
-    var keyCode = e.keyCode || e.which;
-    if (keyCode === 13) {
-        e.preventDefault();
+$('#frm-orderForm-order_id').bind('keypress', function(e) {
+    var code = e.keyCode || e.which;
+    if(code === 13) { //Enter keycode
+        document.getElementById("frm-orderForm-material_id").focus();
+        return false;
+    }
+});
+$('#frm-orderForm-material_id').bind('keypress', function(e) {
+    var code = e.keyCode || e.which;
+    if(code === 13) { //Enter keycode
+        document.getElementById("frm-orderForm-made_quantity").focus();
         return false;
     }
 });

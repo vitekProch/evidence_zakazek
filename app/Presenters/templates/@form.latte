@@ -1,5 +1,3 @@
-{block content}
-
 <form n:name=$name>
     <div class="container mt-5">
         <div class="row">
@@ -14,9 +12,9 @@
 
                         <td>
                             {if $input->getOption(type) in [text, select, textarea]}
-                                {input $input class => form-control, selected}
+                                {input $input class => form-control, autofocus: true}
                             {elseif $input->getOption(type) === button}
-                                {input $input class => "btn btn-outline-dark"}
+                                {input $input class => [btn, btn-outline-dark]}
                             {elseif $input->getOption(type) === checkbox}
                                 <div class="checkbox">{input $input}</div>
                             {elseif $input->getOption(type) === radio}

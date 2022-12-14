@@ -25,10 +25,10 @@ final class UserManager implements Nette\Security\IAuthenticator
 
 
     /** @var Nette\Database\Context */
-    private $database;
+    private Nette\Database\Context $database;
 
     /** @var Passwords */
-    private $passwords;
+    private Passwords $passwords;
 
 
     public function __construct(Nette\Database\Context $database, Passwords $passwords)
@@ -40,7 +40,6 @@ final class UserManager implements Nette\Security\IAuthenticator
 
     /**
      * Performs an authentication.
-     * @throws Nette\Security\AuthenticationException
      */
     public function authenticate(array $credentials): Nette\Security\IIdentity
     {
@@ -67,7 +66,6 @@ final class UserManager implements Nette\Security\IAuthenticator
         unset($arr[self::COLUMN_PASSWORD_HASH]);
         return new Nette\Security\Identity($row[self::COLUMN_EMPLOYEE_ID],$row[self::COLUMN_ROLE], $arr);
     }
-
 
 
     public function add(string $username, string $password, string $employee_id): void

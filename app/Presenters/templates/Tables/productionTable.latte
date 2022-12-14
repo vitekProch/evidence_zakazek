@@ -1,0 +1,55 @@
+{block content}
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Číslo materiálu</th>
+        <th scope="col">Jméno Pracovníka</th>
+        <th scope="col">Průměr Ø</th>
+        <th scope="col">Počet kusů</th>
+        <th scope="col">Datum</th>
+        <th scope="col">Směna</th>
+        <th scope="col">Číslo zakázky</th>
+        {if $user->loggedIn}
+            <th scope="col">Upravit</th>
+            <th scope="col">Smazat</th>
+        {/if}
+    </tr>
+    </thead>
+    <tbody>
+    {foreach $tube_production[0] as $i => $production}
+        {do $i += 1}
+        <tr>
+            <th scope="row">{$production['material_id']}</th>
+            <td>{$production['name']}</td>
+            <td>{$production['diameter']}</td>
+
+            {if isset($tube_production[1][$i])}
+                {do $sum_quantity = 0}
+                {foreach $tube_production[1][$i] as $order}
+                    {do $sum_quantity += $order['made_quantity']}
+                {/foreach}
+                {do $sum_quantity += $production['made_quantity']}
+                <td>{$sum_quantity}</td>
+            {else}
+                <td>{$production['made_quantity']}</td>
+            {/if}
+            <td>{$production['create_date']}</td>
+            <td>{$production['shift_name']}</td>
+             {if isset($tube_production[1][$i])}
+                    {do array_unshift($tube_production[1][$i], $production)}
+                    <td><a n:href="show!, $tube_production[1][$i]" class="ajax btn btn-outline-info">Více</a></td>
+                {if $user->loggedIn}
+                    <td></td>
+                    <td></td>
+                {/if}
+            {else}
+                <td>{$production['order_id']}</td>
+                {if $user->loggedIn AND $production['employee_id'] == $user->id}
+                    <td><a class="btn btn-success btn-sm" n:href="TubeProduction:edit, $production['id'], $position">Upravit</a></td>
+                    <td><a class="btn btn-danger btn-sm" n:href="delete!, id => $production['id']" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+                {/if}
+            {/if}
+        </tr>
+    {/foreach}
+    </tbody>
+</table>

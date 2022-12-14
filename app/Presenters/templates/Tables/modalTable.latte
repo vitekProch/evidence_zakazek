@@ -1,0 +1,37 @@
+{block content}
+<table class="table table-bordered table-responsive-lg">
+    <thead>
+    <tr>
+        <th scope="col">Číslo materiálu</th>
+        <th scope="col">Jméno Pracovníka</th>
+        <th scope="col">Průměr Ø</th>
+        <th scope="col">Počet kusů</th>
+        <th scope="col">Datum</th>
+        <th scope="col">Směna</th>
+        <th scope="col">Číslo zakázky</th>
+        {if $user->loggedIn}
+            <th scope="col">Upravit</th>
+            <th scope="col">Smazat</th>
+        {/if}
+    </tr>
+    </thead>
+    <tbody>
+    {foreach $modal_data as $order}
+        <tr>
+            <th scope="row">{$order['material_id']}</th>
+            <td>{$order['name']}</td>
+            <td>{$order['diameter']}</td>
+            <td>{$order['made_quantity']}</td>
+            <td>{$order['create_date']}</td>
+            <td>{$order['shift_name']}</td>
+            {if isset ($order['order_id'])}
+                <td>{$order['order_id']}</td>
+            {/if}
+                    {if $user->loggedIn AND $order['employee_id'] == $user->id}
+                <td><a class="btn btn-success btn-sm" href="{$basePath}/tube-production/edit/{$order['id']}">Upravit</a></td>
+                <td><a class="btn btn-danger btn-sm" n:href="delete!, id => $order['id']" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+            {/if}
+        </tr>
+    {/foreach}
+    </tbody>
+</table>

@@ -7,17 +7,17 @@ namespace App\Forms;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Security\User;
-
+use App\Exceptions;
 
 final class SignInFormFactory
 {
 	use Nette\SmartObject;
 
 	/** @var FormFactory */
-	private $factory;
+	private FormFactory $factory;
 
 	/** @var User */
-	private $user;
+	private User $user;
 
 
 	public function __construct(FormFactory $factory, User $user)
@@ -26,31 +26,42 @@ final class SignInFormFactory
 		$this->user = $user;
 	}
 
+    public function create(): Form
+    {
+        $form = $this->factory->create();
+        $form->addText('username', 'Zaměstnanecké číslo:')
+            ->setRequired('Prosím vyplňte %label.');
 
-	public function create(callable $onSuccess): Form
-	{
-		$form = $this->factory->create();
-		$form->addText('username', 'Username:')
-			->setRequired('Please enter your username.');
+        $form->addPassword('password', 'Heslo:')
+            ->setRequired('Prosím vyplňte své heslo.');
+        $shifts = [
+            '1' => 'Ranní',
+            '2' => 'Odpolední',
+            '3' => 'Noční',
+        ];
 
-		$form->addPassword('password', 'Password:')
-			->setRequired('Please enter your password.');
+        $form->addSelect('shift', 'Směna: ', $shifts);
 
-		$form->addCheckbox('remember', 'Keep me signed in');
+        $form->addSubmit('send', 'Přihlásit');
 
-		$form->addSubmit('send', 'Sign in');
+        $form->onSuccess[] = [$this, 'signInFormSucceeded'];
 
-		$form->onSuccess[] = function (Form $form, \stdClass $values) use ($onSuccess): void {
-			try {
-				$this->user->setExpiration($values->remember ? '14 days' : '20 minutes');
-				$this->user->login($values->username, $values->password);
-			} catch (Nette\Security\AuthenticationException $e) {
-				$form->addError('The username or password you entered is incorrect.');
-				return;
-			}
-			$onSuccess();
-		};
-
-		return $form;
-	}
+        return $form;
+    }
+    public function signInFormSucceeded(Form $form, \stdClass $values): void
+    {
+        try {
+            $this->user->setExpiration('9 hour');
+            $this->factory->employeeModel->insertShift($values->shift, $values->username);
+            $form->getPresenter()->getUser()->login($values->username, $values->password);
+            $form->getPresenter()->flashMessage('Přihlášení bylo úspěšné.','success');
+            $form->getPresenter()->redirect('Homepage:');
+        }
+        catch (Exceptions\IncorrectNameException $e) {
+            $form->getPresenter()->flashMessage('Nesprávné uživatelské jméno','error');
+        }
+        catch (Exceptions\IncorrectPassword $e) {
+            $form->getPresenter()->flashMessage('Nesprávné uživatelské heslo','error');
+        }
+    }
 }

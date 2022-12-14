@@ -2,6 +2,8 @@
 
 namespace App\Model;
 use App\Repository\TubeExcessRepository;
+use Nette\Database\ResultSet;
+use Nette\Database\Row;
 
 class TubeExcessModel
 {
@@ -16,12 +18,12 @@ class TubeExcessModel
         $this->tubeExcessRepository = $tubeExcessRepository;
     }
 
-    public function getExcess()
+    public function getExcess(): ResultSet
     {
         return $this->tubeExcessRepository->getExcess();
     }
 
-    public function findExcess($order_id)
+    public function findExcess($order_id): ?Row
     {
         return $this->tubeExcessRepository->findExcess($order_id);
     }
@@ -40,7 +42,7 @@ class TubeExcessModel
         $this->tubeExcessRepository->newExcessQuantity($order_id,$quantity);
     }
 
-    public function checkExcess($order_id)
+    public function checkExcess($order_id): ?Row
     {
         return $this->tubeExcessRepository->checkExcess($order_id);
     }
@@ -52,7 +54,7 @@ class TubeExcessModel
     {
         $this->tubeExcessRepository->newExcess($id, $material_id, $quantity, $diameter);
     }
-    public function getExcessById($material_id)
+    public function getExcessById($material_id): ?Row
     {
         return $this->tubeExcessRepository->getExcessById($material_id);
     }

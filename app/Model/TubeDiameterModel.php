@@ -16,7 +16,7 @@ class TubeDiameterModel
     {
         $this->tubeDiameterRepository = $tubeDiameterRepository;
     }
-    public function getDiameters()
+    public function getDiameters(): array
     {
         return $this->tubeDiameterRepository->getDiameters();
     }

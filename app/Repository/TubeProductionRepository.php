@@ -10,19 +10,6 @@ class TubeProductionRepository extends BaseRepository
 {
     CONST TABLE_NAME = 'tube_production';
 
-    public function getTubeProduction(int $limit, int $offset)
-    {
-        return $this->database->query('
-            SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS date_created, shift_name 
-            FROM tube_production 
-            INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
-            INNER JOIN shift ON tube_production.shift_id = shift.shift_id
-            INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.diameter_id
-            ORDER BY create_date DESC
-			LIMIT ?
-			OFFSET ?',$limit, $offset);
-    }
-
     public function getCountAllProduction()
     {
         return $this->database->query('SELECT material_id FROM tube_production ORDER BY create_date DESC')->fetchAll();
@@ -74,7 +61,7 @@ class TubeProductionRepository extends BaseRepository
             throw new Exceptions\DuplicateNameException();
         }
     }
-    public function updateNewData($id , $material_id, $tube_diameter, $made_quantity, $shift_id)
+    public function updateNewData($id , $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id)
     {
         $this->database->table(self::TABLE_NAME)
             ->where('id', $id)
@@ -83,6 +70,7 @@ class TubeProductionRepository extends BaseRepository
             'diameter_id' => $tube_diameter,
             'made_quantity' => $made_quantity,
             'shift_id' => $shift_id,
+            'order_id' => $order_id,
         ]);
     }
     public function getLastDiameter(): string{
@@ -101,15 +89,15 @@ class TubeProductionRepository extends BaseRepository
         $this->database->query('DELETE FROM tube_production WHERE id = ?',$id);
     }
 
-    public function getNoDupTubeProduction()
+    public function getTubeProduction()
     {
         return $this->database->query('
-            SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS date_created, shift_name 
+            SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS create_date, shift_name 
             FROM tube_production 
             INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
             INNER JOIN shift ON tube_production.shift_id = shift.shift_id
             INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.diameter_id
-            ORDER BY create_date DESC')->fetchAll();
+            ORDER BY id DESC')->fetchAll();
     }
 
 }

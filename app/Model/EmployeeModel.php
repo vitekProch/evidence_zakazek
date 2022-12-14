@@ -29,11 +29,6 @@ class EmployeeModel
         $shift_name = $this->shiftRepository->getActiveShift($shift_id)->fetch();
         $this->employeeRepository->insertShift($shift_name->shift_name, $employee_id);
     }
-
-    public function getShift($employee_id)
-    {
-        return $this->employeeRepository->getShift($employee_id);
-    }
     public function getEmployeeName($employee_id)
     {
         return $this->employeeRepository->getEmployeeName($employee_id);

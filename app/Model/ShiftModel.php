@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Repository\ShiftRepository;
+use Nette\Database\Row;
 
 class ShiftModel
 {
@@ -17,12 +18,7 @@ class ShiftModel
         $this->shiftRepository = $shiftRepository;
     }
 
-    public function getShiftById($shift_id)
-    {
-        return $this->shiftRepository->getShiftById($shift_id);
-    }
-
-    public function getShiftByName($shift_name)
+    public function getShiftByName($shift_name): ?Row
     {
         return $this->shiftRepository->getShiftByName($shift_name);
     }

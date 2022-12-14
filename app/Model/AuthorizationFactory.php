@@ -4,13 +4,13 @@
 namespace App\Model;
 use Nette\Security\Permission;
 
-class My_AuthorizatorFactory
+class AuthorizationFactory
 {
     const ROLE_GUEST = 'guest';
     const ROLE_REGISTERED = 'logged_in';
     const ROLE_ADMIN = 'admin';
 
-    public function create()
+    public function create(): Permission
     {
         $acl = new Permission;
 
