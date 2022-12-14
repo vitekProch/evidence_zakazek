@@ -43,7 +43,7 @@ class TubeProductionRepository extends BaseRepository
                 WHERE order_id = ?', $order_id);
     }
 
-    public function insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id)
+    public function insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id, $excess_quantity)
     {
 
         try {
@@ -54,6 +54,7 @@ class TubeProductionRepository extends BaseRepository
                 'diameter_id' => $tube_diameter,
                 'made_quantity' => $made_quantity,
                 'shift_id' => $shift_id,
+                'excess_quantity' => $excess_quantity,
             ]);
         }
         catch (Nette\Database\UniqueConstraintViolationException $e)
@@ -61,7 +62,7 @@ class TubeProductionRepository extends BaseRepository
             throw new Exceptions\DuplicateNameException();
         }
     }
-    public function updateNewData($id , $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id)
+    public function updateNewData($id , $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id, $excess_quantity)
     {
         $this->database->table(self::TABLE_NAME)
             ->where('id', $id)
@@ -71,6 +72,7 @@ class TubeProductionRepository extends BaseRepository
             'made_quantity' => $made_quantity,
             'shift_id' => $shift_id,
             'order_id' => $order_id,
+            'excess_quantity' => $excess_quantity,
         ]);
     }
     public function getLastDiameter(): string{
@@ -92,7 +94,7 @@ class TubeProductionRepository extends BaseRepository
     public function getTubeProduction()
     {
         return $this->database->query('
-            SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS create_date, shift_name 
+            SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS create_date, shift_name, excess_quantity 
             FROM tube_production 
             INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
             INNER JOIN shift ON tube_production.shift_id = shift.shift_id

@@ -1,4 +1,4 @@
-{block content}
+    {block content}
 <table class="table table-bordered table-hover">
     <thead>
     <tr>
@@ -24,14 +24,39 @@
             <td>{$production['diameter']}</td>
 
             {if isset($tube_production[1][$i])}
-                {do $sum_quantity = 0}
+                {var $sum_quantity = 0}
+                {var $sum_excess_quantity = 0}
                 {foreach $tube_production[1][$i] as $order}
                     {do $sum_quantity += $order['made_quantity']}
+                    {do $sum_excess_quantity += $order['excess_quantity']}
                 {/foreach}
                 {do $sum_quantity += $production['made_quantity']}
-                <td>{$sum_quantity}</td>
+                {do $sum_excess_quantity += $production['excess_quantity']}
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            {$sum_quantity}
+                        </div>
+                        {if 0 < $sum_excess_quantity}
+                            <div title="Kusy navíc" class="col text-center">
+                                ({$sum_excess_quantity})
+                            </div>
+                        {/if}
+                    </div>
+                </td>
             {else}
-                <td>{$production['made_quantity']}</td>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            {$production['made_quantity']}
+                        </div>
+                        {if 0 < $production['excess_quantity']}
+                            <div title="Kusy navíc" class="col text-center">
+                                ({$production['excess_quantity']})
+                            </div>
+                        {/if}
+                    </div>
+                </td>
             {/if}
             <td>{$production['create_date']}</td>
             <td>{$production['shift_name']}</td>

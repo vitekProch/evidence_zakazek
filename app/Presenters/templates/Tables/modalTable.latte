@@ -21,7 +21,18 @@
             <th scope="row">{$order['material_id']}</th>
             <td>{$order['name']}</td>
             <td>{$order['diameter']}</td>
-            <td>{$order['made_quantity']}</td>
+            <td>
+                <div class="row">
+                    <div class="col">
+                        {$order['made_quantity']}
+                    </div>
+                    {if $order['excess_quantity'] > 0}
+                        <div title="Kusy navíc" class="col text-center">
+                            ({$order['excess_quantity']})
+                        </div>
+                    {/if}
+                </div>
+            </td>
             <td>{$order['create_date']}</td>
             <td>{$order['shift_name']}</td>
             {if isset ($order['order_id'])}

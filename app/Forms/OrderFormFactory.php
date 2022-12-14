@@ -37,6 +37,10 @@ class OrderFormFactory
             ->addRule($form::NUMERIC, 'Počet kusů se musí skládat pouze z číslic')
             ->addRule($form::MAX_LENGTH, 'Počet kusů může mít maximálně %d znaků', 4)
             ->setRequired('Vyplňte prosím %label');
+
+        $form->addText('excess_quantity', 'Počet navíc: ')
+            ->addRule($form::NUMERIC, 'Počet navíc musí obsahovat pouze číslice');
+
         $form->addSubmit('send', 'Uložit');
         $form->onSuccess[] = [$this, 'orderFormSucceeded'];
         return $form;
@@ -46,7 +50,7 @@ class OrderFormFactory
         try {
             $name = $form->getPresenter()->user->getIdentity()->shift_id;
             $shift_id = $this->factory->shiftModel->getShiftByName($name);
-            $this->factory->tubeProductionModel->insertNewData($data->order_id, $data->material_id, $form->getPresenter()->getUser()->id, $data->diameters, $data->made_quantity,$shift_id->shift_id);
+            $this->factory->tubeProductionModel->insertNewData($data->order_id, $data->material_id, $form->getPresenter()->getUser()->id, $data->diameters, $data->made_quantity,$shift_id->shift_id, $data->excess_quantity);
             $form->getPresenter()->flashMessage('Zakázka byla uložena', 'success');
         }
 

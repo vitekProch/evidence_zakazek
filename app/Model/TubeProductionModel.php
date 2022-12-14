@@ -41,6 +41,7 @@ class TubeProductionModel
                 $new_values[$index_new]['made_quantity'] = $order->made_quantity;
                 $new_values[$index_new]['create_date'] = $order->create_date;
                 $new_values[$index_new]['shift_name'] = $order->shift_name;
+                $new_values[$index_new]['excess_quantity'] = $order->excess_quantity;
                 $index_new += 1;
 
             }
@@ -55,6 +56,7 @@ class TubeProductionModel
                 $same_material[$index_new][$index_material]['made_quantity'] = $order->made_quantity;
                 $same_material[$index_new][$index_material]['create_date'] = $order->create_date;
                 $same_material[$index_new][$index_material]['shift_name'] = $order->shift_name;
+                $same_material[$index_new][$index_material]['excess_quantity'] = $order->excess_quantity;
                 $index_material += 1;
             }
             $current_material = $order->material_id;
@@ -72,6 +74,7 @@ class TubeProductionModel
             $displayed_order[$i]['made_quantity'] = $new_values[$i]['made_quantity'];
             $displayed_order[$i]['create_date'] = $new_values[$i]['create_date'];
             $displayed_order[$i]['shift_name'] = $new_values[$i]['shift_name'];
+            $displayed_order[$i]['excess_quantity'] = $new_values[$i]['excess_quantity'];
         }
 
         return array($displayed_order, $same_material);
@@ -95,9 +98,9 @@ class TubeProductionModel
         return $counter;
     }
 
-    public function insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id)
+    public function insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id, $excess_quantity)
     {
-        $this->tubeProductionRepository->insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id);
+        $this->tubeProductionRepository->insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id, $excess_quantity);
     }
 
     public function searchOrderByMaterialId($order_id): ResultSet
@@ -120,9 +123,9 @@ class TubeProductionModel
         return $this->tubeProductionRepository->getOrderById();
     }
 
-    public function updateNewData($id, $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id)
+    public function updateNewData($id, $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id, $excess_quantity)
     {
-        $this->tubeProductionRepository->updateNewData($id, $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id);
+        $this->tubeProductionRepository->updateNewData($id, $material_id, $tube_diameter, $made_quantity, $shift_id, $order_id, $excess_quantity);
     }
     public function deleteRecord($id)
     {
