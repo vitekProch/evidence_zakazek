@@ -11,5 +11,6 @@
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="xlsx" level="application" />
   </component>
 </module>

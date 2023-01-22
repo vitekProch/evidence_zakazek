@@ -1,17 +1,17 @@
-    {block content}
-<table class="table table-bordered table-hover">
+{block content}
+<table class="content-table">
     <thead>
     <tr>
-        <th scope="col">Číslo materiálu</th>
-        <th scope="col">Jméno Pracovníka</th>
-        <th scope="col">Průměr Ø</th>
-        <th scope="col">Počet kusů</th>
-        <th scope="col">Datum</th>
-        <th scope="col">Směna</th>
-        <th scope="col">Číslo zakázky</th>
+        <th>Číslo materiálu</th>
+        <th>Jméno Pracovníka</th>
+        <th>Průměr Ø</th>
+        <th>Počet kusů</th>
+        <th>Datum</th>
+        <th>Směna</th>
+        <th>Číslo zakázky</th>
         {if $user->loggedIn}
-            <th scope="col">Upravit</th>
-            <th scope="col">Smazat</th>
+            <th>Upravit</th>
+            <th>Smazat</th>
         {/if}
     </tr>
     </thead>
@@ -19,7 +19,7 @@
     {foreach $tube_production[0] as $i => $production}
         {do $i += 1}
         <tr>
-            <th scope="row">{$production['material_id']}</th>
+            <td>{$production['material_id']}</td>
             <td>{$production['name']}</td>
             <td>{$production['diameter']}</td>
 
@@ -32,30 +32,26 @@
                 {/foreach}
                 {do $sum_quantity += $production['made_quantity']}
                 {do $sum_excess_quantity += $production['excess_quantity']}
-                <td>
-                    <div class="row">
-                        <div class="col">
-                            {$sum_quantity}
-                        </div>
-                        {if 0 < $sum_excess_quantity}
-                            <div title="Kusy navíc" class="col text-center">
-                                ({$sum_excess_quantity})
-                            </div>
-                        {/if}
+                <td class="excess_quantity">
+                    <div>
+                        {$sum_quantity}
                     </div>
+                    {if 0 < $sum_excess_quantity}
+                        <div title="Kusy navíc">
+                            ({$sum_excess_quantity})
+                        </div>
+                    {/if}
                 </td>
             {else}
-                <td>
-                    <div class="row">
-                        <div class="col">
-                            {$production['made_quantity']}
-                        </div>
-                        {if 0 < $production['excess_quantity']}
-                            <div title="Kusy navíc" class="col text-center">
-                                ({$production['excess_quantity']})
-                            </div>
-                        {/if}
+                <td class="excess_quantity">
+                    <div>
+                        {$production['made_quantity']}
                     </div>
+                    {if 0 < $production['excess_quantity']}
+                        <div title="Kusy navíc">
+                            ({$production['excess_quantity']})
+                        </div>
+                    {/if}
                 </td>
             {/if}
             <td>{$production['create_date']}</td>

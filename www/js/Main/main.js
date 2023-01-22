@@ -2,11 +2,15 @@ $(function () {
     $.nette.init();
 });
 
+
+
 $(function() {
     setTimeout(function(){
         $('.alert').slideUp(500);
     }, 5000);
 });
+
+
 $.nette.ext("modals", {
     success: function(payload) {
         if (payload.redirect) {

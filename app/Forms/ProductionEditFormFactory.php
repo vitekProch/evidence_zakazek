@@ -48,6 +48,10 @@ class ProductionEditFormFactory
 
         $form->addSelect('shift_id', 'Směna: ', $shifts);
         $form->setDefaults(["shift" => 3, "diameter" => 2]);
+
+        $form->addText('excess_quantity', 'Počet navíc')
+            ->addRule($form::NUMERIC, '%label se musí skládat pouze z číslic');
+
         $form->addSubmit('save', 'Uložit');
 
         $form->onSuccess[] = [$this, 'editFormSucceeded'];
@@ -62,10 +66,14 @@ class ProductionEditFormFactory
             $values['diameter_id'],
             $values['made_quantity'],
             $values['shift_id'],
-            $values['order_id']);
+            $values['order_id'],
+            $values['excess_quantity']);
 
         $form->getPresenter()->flashMessage('Zakázka byla upravena.', 'success');
-        $form->getPresenter()->redirect($values['back_to']);
+        if ($values['back_to'] != ""){
+            $form->getPresenter()->redirect($values['back_to']);
+        }
+        $form->getPresenter()->redirect("TubeProduction:production");
     }
 
 }

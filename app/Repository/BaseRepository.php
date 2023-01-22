@@ -8,7 +8,7 @@ class BaseRepository
     use Nette\SmartObject;
 
     /** @var Nette\Database\Context */
-    protected $database;
+    protected Nette\Database\Context $database;
 
     public function __construct(Nette\Database\Context $database)
     {

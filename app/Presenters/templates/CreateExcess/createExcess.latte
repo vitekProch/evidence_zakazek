@@ -1,4 +1,54 @@
 ﻿{block content}
+<div class="excess-container">
+        <h1 class="text-center" n:block=title>Materiál navíc</h1>
+    <form n:name=excessForm>
+        <table class="m-auto table_background">
+            <tr>
+                <th class="text-right pr-2"><label n:name=material_id>Číslo materiálu navíc:  </label></th>
+                <td><input id="idExcess" class="form-control" n:name=material_id></td>
+            </tr>
+            <tr>
+                <th class="text-right pr-2"><label n:name=quantity>Počet navíc:  </label></th>
+                <td><input id="quantityExcess" class="form-control" n:name=quantity></td>
+            </tr>
+            <tr>
+                <th class="text-right pr-2"><label n:name=diameters>Průměr:  </label></th>
+                <td><select class="form-control" n:name=diameters></select></td>
+            </tr>
+            <tr>
+                <th>
+
+                </th>
+                <td>
+                    <input n:name=save class="btn btn-outline-dark">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th scope="col">Číslo materiálu navíc</th>
+                <th scope="col">Počet kusů navíc</th>
+                <th scope="col">Průměr Ø</th>
+                <th scope="col">Upravit</th>
+                <th scope="col">Smazat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $getExcess as $Excess}
+                <tr>
+                    <th scope="row">{$Excess->material_id}</th>
+                    <td>{$Excess->quantity}</td>
+                    <td>{$Excess->diameter}</td>
+                    <td><a n:href="edit!,$Excess->material_id" class="ajax btn btn-success btn-sm" title="editovat"><i class="fa fa-balance-scale fa-lg"></i>Upravit</a></td>
+
+                    <td><a class="btn btn-danger btn-sm" n:href="delete!, id => $Excess->material_id" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>
+</div>
 {snippet modal}
 	{if $presenter->isAjax()}
 		{ifset #modal}
@@ -27,68 +77,6 @@
 		{/ifset}
 	{/if}
 {/snippet}
-
-<h1 class="text-center title_margin" n:block=title>Materiál navíc</h1>
-<div class="container">
-    <div class="row">
-        <div class="col mt-5">
-            <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
-            <form n:name=excessForm>
-                <table class="m-auto table_background">
-                    <tr>
-                        <th class="text-right pr-2"><label n:name=material_id>Číslo materiálu navíc:  </label></th>
-                        <td><input id="idExcess" class="form-control" n:name=material_id></td>
-                    </tr>
-                    <tr>
-                        <th class="text-right pr-2"><label n:name=quantity>Počet navíc:  </label></th>
-                        <td><input id="quantityExcess" class="form-control" n:name=quantity></td>
-                    </tr>
-                    <tr>
-                        <th class="text-right pr-2"><label n:name=diameters>Průměr:  </label></th>
-                        <td><select class="form-control" n:name=diameters></select></td>
-                    </tr>
-                    <tr>
-                        <th>
-
-                        </th>
-                        <td>
-                            <input n:name=save class="btn btn-outline-dark">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-    <div class="row mt-5 text-center">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Číslo materiálu navíc</th>
-                        <th scope="col">Počet kusů navíc</th>
-                        <th scope="col">Průměr Ø</th>
-                        <th scope="col">Upravit</th>
-                        <th scope="col">Smazat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {foreach $getExcess as $Excess}
-                        <tr>
-                            <th scope="row">{$Excess->material_id}</th>
-                            <td>{$Excess->quantity}</td>
-                            <td>{$Excess->diameter}</td>
-                            <td><a n:href="edit!,$Excess->material_id" class="ajax btn btn-success btn-sm" title="editovat"><i class="fa fa-balance-scale fa-lg"></i>Upravit</a></td>
-
-                            <td><a class="btn btn-danger btn-sm" n:href="delete!, id => $Excess->material_id" onClick="return confirm('Opravdu smazat?');">Smazat</a></td>
-                        </tr>
-                    {/foreach}
-                </tbody>
-            </table>
-        </div>
-        <div class="col-2"></div>
-    </div>
-</div>
 
 {define modalTitle}Editovat položku{/define}
 

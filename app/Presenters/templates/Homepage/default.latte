@@ -1,23 +1,9 @@
 {block content}
-
-<h1 class="text-center title_margin" n:block=title>Nová zakázka</h1>
-
-<div class="container">
-    <div class="row text-center">
-        <div class="col">
-            <div class="ajax" id="search_result"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {include "../@form.latte", name: orderForm}
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col">
-            {include "../Tables/productionTable.latte" $tube_production, $position}
-        </div>
-    </div>
+<div class="new-order">
+    <h1 class="text-center" n:block=title>Nová zakázka</h1>
+    <div class="ajax" id="search_result"></div>
+    {include "../@form.latte", name: orderForm}
+    {include "../Tables/productionTable.latte" $tube_production, $position}
 </div>
 
 {define modalTitle}Jednotlivé zakázky{/define}

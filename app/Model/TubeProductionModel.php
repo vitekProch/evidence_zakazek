@@ -103,14 +103,13 @@ class TubeProductionModel
         $this->tubeProductionRepository->insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id, $excess_quantity);
     }
 
-    public function searchOrderByMaterialId($order_id): ResultSet
+    public function searchOrderByOrder($order_id): ResultSet
     {
-        return $this->tubeProductionRepository->searchOrderByMaterialId($order_id);
+        return $this->tubeProductionRepository->searchOrderByOrder($order_id);
     }
-
-    public function searchOrderByOrderId($order_id): ResultSet
+    public function searchOrderByMaterial($material_id): ResultSet
     {
-        return $this->tubeProductionRepository->searchOrderByOrderId($order_id);
+        return $this->tubeProductionRepository->searchOrderByMaterial($material_id);
     }
 
     public function getLastDiameter(): string

@@ -9,54 +9,53 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-	<div class="container-fluid">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a n:class="nav-link, $presenter->isLinkCurrent('Homepage:default') ? 'active'" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
+	<nav class="nav-menu">
+		<div class="nav-items">
+			<ul class="nav-left-menu">
+				<li>
+					<a n:class="$presenter->isLinkCurrent('Homepage:default') ? 'active'" n:href="Homepage:default">Nová zakázka<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
-					<a n:class="nav-link, $presenter->isLinkCurrent('TubeProduction:production') ? 'active'" n:href="TubeProduction:production">Vyrobeno</a>
+				<li>
+					<a n:class="$presenter->isLinkCurrent('TubeProduction:production') ? 'active'" n:href="TubeProduction:production">Vyrobeno</a>
 				</li>
-				<li class="nav-item">
-					<a n:class="nav-link, $presenter->isLinkCurrent('CreateExcess:createExcess') ? 'active'" n:href="CreateExcess:createExcess">Materiál navíc</a>
+				<li>
+					<a n:class="$presenter->isLinkCurrent('CreateExcess:createExcess') ? 'active'" n:href="CreateExcess:createExcess">Materiál navíc</a>
 				</li>
-				<li class="nav-item">
-					<a n:class="nav-link, $presenter->isLinkCurrent('Sign:up') ? 'active'" n:if="$user->isAllowed('register', 'view')" n:href="Sign:up">Registrovat</a>
+				<li>
+					<a n:class="$presenter->isLinkCurrent('Sign:up') ? 'active'" n:if="$user->isAllowed('register', 'view')" n:href="Sign:up">Registrovat</a>
 				</li>
-				<li class="nav-item">
+				<li>
 					{if $user->loggedIn}
-						<a class="nav-link" n:href="Sign:out">Odhlásit</a>
+						<a n:href="Sign:out">Odhlásit</a>
 					{else}
-						<a n:class="nav-link, $presenter->isLinkCurrent('Sign:in') ? 'active'" n:href="Sign:in">Přihlásit</a>
+						<a n:class="$presenter->isLinkCurrent('Sign:in') ? 'active'" n:href="Sign:in">Přihlásit</a>
 					{/if}
 				</li>
 			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item mr-3">
+			<ul class="nav-user-values">
+				<li>
 					{if $user->loggedIn}
-						<div class="navbar-text mr-4"> {$user->getIdentity()->getData()[name]}</div>
+						<div class="nav-user-name"> {$user->getIdentity()->getData()[name]}</div>
 					{/if}
 				</li>
-				<li class="nav-item mr-5">
+				<li>
 					{if $user->loggedIn}
 						<div class="navbar-text"> {$user->getIdentity()->getData()[shift_id]} </div>
 					{/if}
 				</li>
 			</ul>
-			<form n:name="searchForm" class="form-inline my-lg-0">
+			<form n:name="searchForm" class="nav-form">
 				<select class="form-control mr-1" n:name="search_select">SELECT</select>
 				<input class="form-control mr-sm-2" type="text" n:name="search_value" placeholder="Číslo zakázky" aria-label="Search">
-				<input class="btn btn-outline-success my-2 my-sm-0" n:name="send" value="Vyhledat">
+				<input class="btn btn-outline-light my-2 my-sm-0" n:name="send" value="Vyhledat">
 			</form>
 		</div>
-	</div>
-</nav>
+		<div class="hamburger">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+	</nav>
 
 {snippet modal}
 	{if $presenter->isAjax()}
@@ -64,14 +63,6 @@
 			<div class="modal fade modal-ajax" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true" data-bs-keyboard="false">
 				<div class="modal-dialog modal-xl">
 					<div class="modal-content">
-						<div class="modal-header">
-
-							{block modalHeader}
-							<h3 class="modal-title float-left">
-								{block|striptags}{include #modalTitle}{/block}
-							</h3>
-							{/block}
-						</div>
 						<div class="modal-body">
 							{include #modal}
 						</div>
@@ -86,12 +77,12 @@
 		{/ifset}
 	{/if}
 {/snippet}
-
-	<div class="container">
-
+	<div class="content">
 		{include content}
 	</div>
+
 	{block scripts}
+		<script src="{$basePath}/js/HamburgerMenu/hamburger.js"></script>
 		<script src="{$basePath}/js/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="{$basePath}/js/Ajax/jquery.min.js"></script>
 		<script src="{$basePath}/js/nette.ajax.js-master/nette.ajax.js"></script>

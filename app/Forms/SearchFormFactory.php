@@ -19,7 +19,7 @@ class SearchFormFactory
     public function create(): Form
     {
         $form = $this->factory->create();
-        $form->addText('search_value', 'Send:')
+        $form->addText('search_value', 'Jméno')
             ->setRequired(TRUE);
         $form->addSubmit('send', 'Send');
         $options =  [
@@ -33,7 +33,7 @@ class SearchFormFactory
 
     public function searchFormSucceeded(Form $form, $values): void
     {
-        $form->getPresenter()->redirect("Search:search", [$values->search_value], $values->search_select);
+        $form->getPresenter()->redirect("Search:search", $values->search_value, $values->search_select);
     }
 
 }

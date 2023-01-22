@@ -9,7 +9,7 @@ class TubeExcessRepository extends BaseRepository
 {
     CONST TABLE_NAME = 'tube_excess';
 
-    public function getExcessById($material_id)
+    public function getExcessById($material_id): ?Row
     {
         return $this->database->query('SELECT * FROM tube_excess WHERE material_id = ?', $material_id)->fetch();
     }
@@ -61,9 +61,5 @@ class TubeExcessRepository extends BaseRepository
     public function checkExcess($material_id): ?Row
     {
         return $this->database->query('SELECT material_id FROM tube_excess WHERE material_id = ?', $material_id)->fetch();
-    }
-    public function getExcessByOrderId(): \Nette\Database\Table\Selection
-    {
-        return $this->database->table(self::TABLE_NAME);
     }
 }

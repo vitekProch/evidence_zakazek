@@ -1,7 +1,7 @@
 $(document).ready(function(){
         $("#frm-orderForm-material_id").keyup(function()
         {
-            var input = $(this).val();
+            let input = $(this).val();
             if (input !== "") {
                 $.ajax({
                     url:"excess",
@@ -18,14 +18,14 @@ $(document).ready(function(){
 
  });
 $('#frm-orderForm-order_id').bind('keypress', function(e) {
-    var code = e.keyCode || e.which;
+    let code = e.keyCode || e.which;
     if(code === 13) { //Enter keycode
         document.getElementById("frm-orderForm-material_id").focus();
         return false;
     }
 });
 $('#frm-orderForm-material_id').bind('keypress', function(e) {
-    var code = e.keyCode || e.which;
+    let code = e.keyCode || e.which;
     if(code === 13) { //Enter keycode
         document.getElementById("frm-orderForm-made_quantity").focus();
         return false;

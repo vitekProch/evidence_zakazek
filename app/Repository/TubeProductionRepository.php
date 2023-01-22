@@ -10,20 +10,19 @@ class TubeProductionRepository extends BaseRepository
 {
     CONST TABLE_NAME = 'tube_production';
 
-    public function getCountAllProduction()
+    public function getCountAllProduction(): array
     {
         return $this->database->query('SELECT material_id FROM tube_production ORDER BY create_date DESC')->fetchAll();
     }
 
-    public function getOrderById()
+    public function getOrderById(): Nette\Database\Table\Selection
     {
         return $this->database->table(self::TABLE_NAME);
     }
 
-    public function searchOrderByMaterialId($material_id): ResultSet
+    public function searchOrderByMaterial($material_id): ResultSet
     {
-            return $this->database->query('
-                SELECT order_id, material_id, employee.name, diameter, made_quantity, create_date, shift_name 
+        return $this->database->query('SELECT excess_quantity, order_id,tube_production.id, material_id, employee.employee_id, employee.name, diameter, made_quantity, create_date, shift_name 
                 FROM tube_production 
                 INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
                 INNER JOIN shift ON tube_production.shift_id = shift.shift_id 
@@ -31,17 +30,17 @@ class TubeProductionRepository extends BaseRepository
                 WHERE material_id LIKE "%"?"%"
                 ORDER BY create_date DESC', $material_id);
     }
-
-    public function searchOrderByOrderId($order_id): ResultSet
+    public function searchOrderByOrder($material_id): ResultSet
     {
-        return $this->database->query('
-                SELECT order_id, material_id, employee.name, diameter, made_quantity, create_date, shift_name 
+        return $this->database->query('SELECT excess_quantity, order_id,tube_production.id, material_id, employee.employee_id, employee.name, diameter, made_quantity, create_date, shift_name 
                 FROM tube_production 
                 INNER JOIN employee ON tube_production.employee_id = employee.employee_id 
                 INNER JOIN shift ON tube_production.shift_id = shift.shift_id 
                 INNER JOIN tube_diameter ON tube_diameter.diameter_id = tube_production.diameter_id
-                WHERE order_id = ?', $order_id);
+                WHERE order_id = ?
+                ORDER BY create_date DESC', $material_id);
     }
+
 
     public function insertNewData($order_id, $material_id, $employee_id, $tube_diameter, $made_quantity, $shift_id, $excess_quantity)
     {
@@ -91,7 +90,7 @@ class TubeProductionRepository extends BaseRepository
         $this->database->query('DELETE FROM tube_production WHERE id = ?',$id);
     }
 
-    public function getTubeProduction()
+    public function getTubeProduction(): array
     {
         return $this->database->query('
             SELECT order_id, tube_production.id, material_id, employee.name, employee.employee_id, diameter, made_quantity, DATE_FORMAT(create_date,"%d-%m-%Y") AS create_date, shift_name, excess_quantity 

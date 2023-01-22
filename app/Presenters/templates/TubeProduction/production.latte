@@ -1,22 +1,18 @@
 {block content}
-<h1 class="text-center title_margin" n:block=title>Vyrobené zakázky</h1>
-<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col">
-                {include "../Tables/productionTable.latte" $tube_production, $position}
-            </div>
-        </div>
-    </div>
+<div class="order-list-container">
+    <h1 class="text-center title_margin" n:block=title>Vyrobené zakázky</h1>
+    <div style="width: 900px" n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+    {include "../Tables/productionTable.latte" $tube_production, $position}
+</div>
 
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         {if !$paginator->isFirst()}
-            <li class="page-item"><a class="page-link" n:href="production, 1">První</a></li>
-            <li class="page-item"><a class="page-link" n:href="production, $paginator->page-1">Předchozí</a></li>
+            <li class="page-item page-item-deactivate"><a class="page-link" n:href="production, 1">První</a></li>
+            <li class="page-item"><a class="page-link page-item-deactivate" n:href="production, $paginator->page-1">Předchozí</a></li>
         {/if}
 
-        <div class="page-item"><h6 class="page-link">Stránka {$paginator->getPage()} z {$paginator->getPageCount()}</h6> </div>
+        <li class="page-item"><h6 class="page-link">Stránka {$paginator->getPage()} z {$paginator->getPageCount()}</h6> </li>
 
         {if !$paginator->isLast()}
             <li class="page-item"><a class="page-link" n:href="production, $paginator->getPage() + 1">Další</a></li>
@@ -25,7 +21,6 @@
     </ul>
 </nav>
 
-{define modalTitle}Jednotlivé zakázky{/define}
 {define modal}
     {include "../Tables/modalTable.latte" $modal_data}
 {/define}
