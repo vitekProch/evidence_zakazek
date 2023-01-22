@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="41888753-83c9-44b6-ae63-221359a92c5b" name="Changes" comment="">
 <<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/Model/ShiftModel.php" afterDir="false" />
@@ -17,6 +18,22 @@
       <change beforePath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Search/search.latte" afterDir="false" />
 >>>>>>> funkcni_shift
+=======
+    <list default="true" id="579440eb-2105-48b3-bdd9-e872bbc49635" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/TubeExcessModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/TubeExcessModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/CreateExcessPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/CreateExcessPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/HomepagePresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/HomepagePresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/SearchPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/SearchPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/TubeProductionPresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/TubeProductionPresenter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/@layout.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/CreateExcess/createExcess.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/CreateExcess/createExcess.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Excess/default.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/Homepage/default.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/Homepage/default.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/edit.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/edit.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/production.latte" beforeDir="false" afterPath="$PROJECT_DIR$/app/Presenters/templates/TubeProduction/production.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/TubeExcessRepository.php" afterDir="false" />
+>>>>>>> 367f4e12fb5bb379f608af41db92c4b250882252
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +89,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -80,6 +98,23 @@
     &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/zakazky_stroj&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/zakazky_s",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+>>>>>>> 367f4e12fb5bb379f608af41db92c4b250882252
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,6 +124,7 @@
       <created>1661849610280</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1661849610280</updated>
       <workItem from="1661849612969" duration="3315000" />
       <workItem from="1661856643425" duration="1719000" />
@@ -99,6 +135,40 @@
       <workItem from="1661930915503" duration="1982000" />
       <workItem from="1661978087764" duration="5149000" />
 >>>>>>> funkcni_shift
+=======
+      <updated>1656060100000</updated>
+      <workItem from="1656060101631" duration="7806000" />
+      <workItem from="1656077375466" duration="943000" />
+      <workItem from="1656078602262" duration="19921000" />
+      <workItem from="1656246327174" duration="23959000" />
+      <workItem from="1656614416333" duration="1070000" />
+      <workItem from="1656618393797" duration="934000" />
+      <workItem from="1656747748085" duration="1666000" />
+      <workItem from="1657185981304" duration="3687000" />
+      <workItem from="1657207618719" duration="1920000" />
+      <workItem from="1657217570993" duration="142000" />
+      <workItem from="1657736228466" duration="2846000" />
+      <workItem from="1657804505773" duration="5977000" />
+      <workItem from="1657892971389" duration="6087000" />
+      <workItem from="1658058437694" duration="16454000" />
+      <workItem from="1658125932455" duration="7364000" />
+      <workItem from="1658178635569" duration="5935000" />
+      <workItem from="1658222994888" duration="5801000" />
+      <workItem from="1658307167993" duration="8248000" />
+      <workItem from="1659179848503" duration="2000" />
+      <workItem from="1659179858922" duration="338000" />
+      <workItem from="1659180813946" duration="13000" />
+      <workItem from="1659180837019" duration="4000" />
+      <workItem from="1659180861408" duration="37000" />
+      <workItem from="1659181507658" duration="7170000" />
+      <workItem from="1659204646420" duration="14464000" />
+      <workItem from="1659477161748" duration="1157000" />
+      <workItem from="1659512063376" duration="7051000" />
+      <workItem from="1659654861385" duration="44000" />
+      <workItem from="1659971949530" duration="7989000" />
+      <workItem from="1659981187497" duration="1030000" />
+      <workItem from="1661108128806" duration="4792000" />
+>>>>>>> 367f4e12fb5bb379f608af41db92c4b250882252
     </task>
     <servers />
   </component>
